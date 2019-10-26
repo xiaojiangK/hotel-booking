@@ -1,0 +1,308 @@
+.page{
+    position: relative;
+    padding: 150rpx 0 132rpx;
+    background: #F2F2F2;
+}
+.navigate {
+    display: flex;
+    position: fixed;
+    height: 150rpx;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: #fff;
+    border-bottom: 1rpx solid #f1f1f1;
+    overflow: hidden;
+}
+.navigate .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 60rpx;
+    padding: 0 28rpx;
+    width: 200rpx;
+    text-align: left;
+    height: 96rpx;
+    line-height: 1;
+}
+.navigate .back image {
+    display: block;
+    width: 20rpx;
+    height: 36rpx;
+}
+.navigate .title {
+    display: block;
+    margin-top: 60rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex: 1;
+    text-align: center;
+    font-size: 28rpx;
+    height: 96rpx;
+    line-height: 96rpx;
+    padding: 0 72rpx;
+}
+.navigate .title text {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+}
+.pupup .maks{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+}
+.explain{
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 658rpx;
+    position: fixed;
+    background: #fff;
+    border-radius: 16rpx;
+    box-sizing: border-box;
+    padding: 42rpx 38rpx 0 34rpx;
+    transform: translate3d(-50%, -50%, 0);
+}
+.explain .title{
+    color: #181818;
+    font-size: 32rpx;
+    margin: 0 0 28rpx;
+    text-align: center;
+}
+.explain .content{
+    margin: 0 0 40rpx;
+    font-size: 26rpx;
+}
+.explain .content text{
+    display: block;
+    color: #5A5A5A;
+    line-height: 34rpx;
+    margin: 0 0 10rpx;
+}
+.explain .btn{
+    width: 100%;
+    height: 88rpx;
+    color: #FF6634;
+    font-size: 28rpx;
+    line-height: 88rpx;
+    text-align: center;
+    border-top: 2rpx solid #eee;
+}
+.info-box{
+    padding: 20rpx 20rpx;
+}
+.info-box .info{
+    background: #fff;
+    border-radius: 8rpx;
+    margin: 0 0 18rpx;
+}
+.info-box .item{
+    overflow: hidden;
+    padding: 20rpx 0 0 30rpx;
+    border-bottom: 2rpx solid #eee;
+}
+.info-box .item:last-child{
+    border: none;
+}
+.info-box .item .left{
+    width: 60%;
+    float: left;
+}
+.info-box .item .title{
+    font-size: 32rpx;
+    line-height: 46rpx;
+}
+.info-box .left .desc{
+    margin: 8rpx 0 0;
+    font-size: 28rpx;
+    color: #5A5A5A;
+    line-height: 40rpx;
+}
+.info-box .right{
+    width: 40%;
+    float: right;
+}
+.info-box .right .price{
+    color: #FF6634;
+    font-size: 44rpx;
+    line-height: 62rpx;
+    margin: 0 28rpx 6rpx 0;
+    text-align: right;
+}
+.info-box .right .price text{
+    font-size: 24rpx;
+}
+.info-box .member{
+    width: 240rpx;
+    position: relative;
+}
+.info-box .member .text{
+    display: block;
+    transform: skewX(20deg);
+}
+.info-box .member .grade{
+    width: 110rpx;
+    height: 32rpx;
+    color: #EFC587;
+    text-align: center;
+    line-height: 32rpx;
+    font-size: 22rpx;
+    border-radius: 8rpx;
+    transform: skewX(-20deg);
+    position: relative;
+    z-index: 2;
+    left: 0;
+    background-image: linear-gradient(#494140, #111);
+}
+.info-box .member .rebate{
+    width: 190rpx;
+    height: 32rpx;
+    color: #181818;
+    font-size: 22rpx;
+    text-align: center;
+    line-height: 32rpx;
+    position: absolute;
+    background: #F2D5AF;
+    text-indent: 16rpx;
+    border-radius: 8rpx;
+    transform: skewX(-20deg);
+    left: 76rpx;
+    top: 0;
+}
+.info-box .member .rebate text{
+    margin: 0 4rpx;
+}
+.info-box .tip{
+    color: #929292;
+    font-size: 26rpx;
+    line-height: 36rpx;
+}
+.info-box .time{
+    display: flex;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+}
+.info-box .time .date{
+    flex: 4;
+}
+.info-box .time .title{
+    color: #181818;
+    font-size: 32rpx;
+    line-height: 46rpx;
+}
+.info-box .time .desc{
+    font-size: 24rpx;
+    color: #929292;
+    line-height: 34rpx;
+    margin: 0 0 0 6rpx;
+}
+.info-box .time .num{
+    flex: 2;
+    font-size: 24rpx;
+    color: #4289FF;
+}
+.form .item{
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: #fff;
+    border-bottom: 2rpx solid #eee;
+}
+.form .item .title{
+    float: left;
+    width: 124rpx;
+    margin: 0 60rpx 0 20rpx;
+    color: #B2B2B2;
+    font-size: 30rpx;
+}
+.form .item .desc{
+    float: left;
+    width: 350rpx;
+    height: 90rpx;
+    color: #B2B2B2;
+    font-size: 30rpx;
+}
+.form .item .switch{
+    float: right;
+    width: 120rpx;
+    margin: 0 40rpx 0 0;
+}
+.form .item input{
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #181818;
+}
+.form .item .black{
+    color: #181818;
+}
+.form .item picker{
+    width: 100%;
+    height: 90rpx;
+    color: #181818;
+    line-height: 90rpx;
+}
+.form .gold{
+    margin: 20rpx 0 0;
+}
+.foot{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    height: 132rpx;
+    overflow: hidden;
+    background: #fff;
+}
+.foot .price{
+    float: left;
+    width: 382rpx;
+    padding: 28rpx 0 0 56rpx;
+    border-top: 2rpx solid #E5E5E5;
+}
+.foot .price .text{
+    color: #FF6634;
+    font-size: 46rpx;
+    line-height: 46rpx;
+    margin: 0 0 4rpx;
+}
+.foot .price text{
+    margin: 0 4rpx 0 0;
+    font-size: 28rpx;
+}
+.foot .back{
+    height: 32rpx;
+    color: #fff;
+    padding: 0 8rpx;
+    font-size: 24rpx;
+    line-height: 32rpx;
+    text-align: center;
+    border-radius: 4rpx;
+    display: inline-block;
+    background-image: linear-gradient(#FF9900, #FF6634);
+}
+.foot .btn{
+    float: right;
+    width: 312rpx;
+    height: 132rpx;
+    color: #fff;
+    font-size: 36rpx;
+    line-height: 132rpx;
+    text-align: center;
+    background: #FF6634;
+}
+.foot .ok{
+    background: #ccc;
+}

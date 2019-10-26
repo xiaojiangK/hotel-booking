@@ -1,0 +1,86 @@
+.searchStar .maks{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background: rgba(0,0,0,.5);
+}
+.searchStar .container{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    transition: .6s all;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+}
+.searchStar .container .content{
+    padding: 0 30rpx;
+}
+.searchStar .container .title{
+    font-size: 32rpx;
+    margin: 22rpx 0 26rpx;
+    line-height: 46rpx;
+}
+.searchStar .list{
+    overflow: hidden;
+}
+.searchStar .list .item{
+    width: 164rpx;
+    height: 70rpx;
+    float: left;
+    font-size: 24rpx;
+    color: #5A5A5A;
+    text-align: center;
+    line-height: 70rpx;
+    background: #F4F5F9;
+    margin: 0 10rpx 12rpx 0;
+}
+.searchStar .list .active{
+    color: #FF6634;
+    background: #FFF1F2;
+}
+.searchStar .list .item:nth-of-type(4n){
+    margin: 0 0 12rpx;
+}
+.searchStar .btns{
+    width: 100%;
+    overflow: hidden;
+    margin: 46rpx 0 0;
+}
+.searchStar .btns .reset{
+    width: 250rpx;
+    height: 94rpx;
+    float: left;
+    color: #5a5a5a;
+    line-height: 94rpx;
+    background: #fff;
+    text-align: center;
+    font-size: 32rpx;
+    border-top: 1px solid #f2f2f2;
+}
+.searchStar .btns .submit{
+    width: 500rpx;
+    height: 94rpx;
+    color: #fff;
+    float: left;
+    font-size: 32rpx;
+    line-height: 94rpx;
+    text-align: center;
+    background: #ff6634;
+}
+
+
+
+
+
+
+
+
+
+
+

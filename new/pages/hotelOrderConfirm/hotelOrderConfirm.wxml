@@ -1,0 +1,140 @@
+<!-- 订单确认页 -->
+<view class="top">
+  <!-- room start -->
+  <view class="room">
+    <view class="row">
+      <view class="name">{{room.name}}</view>
+      <view class="price">{{room.price}}</view>
+    </view>
+    <view class="row">
+      <view class="desc">{{room.breakfast == '1' ? '' : '不'}}含早 {{room.bedtype}} {{room.windows == '1' ? '有' : '无'}}窗</view>
+      <view class="vip">
+        <image class="icon-vip" src="../../assets/image/icon-vip.png" mode="aspectFill"></image>
+        <text>{{room.rebate * 10}}折特权</text>
+      </view>
+    </view>
+    <view class="duration">
+      <text class="date">{{today}}</text>
+      <text class="status">今夜入住</text>
+      <text class="date">{{tomorrow}}</text>
+      <text class="status">明天离店</text>
+      <text class="sum">共{{days}}晚</text>
+    </view>
+  </view>
+  <!-- room end -->
+  <view class="explain">今夜特价酒店预订成功后不可取消/变更，如未入住，将扣除 全额房费房间整晚保留</view>
+</view>
+<!-- user start -->
+<view class="user">
+  <view class="form-group">
+    <label for="">房间数</label>
+    <picker value="{{roomIndex}}" range="{{roomArray}}" disabled="{{isOrder}}" bindchange="roomChange">
+      <text>{{roomArray[roomIndex]}}间</text>
+    </picker>
+  </view>
+  <view class="form-group">
+    <label for="">入住人</label>
+    <input type="text" placeholder="姓名，每间只需填写1人" disabled="{{isOrder}}" value="{{contacts}}" data-idx="name" bindblur="inputChange" placeholder-class="placeholder" maxlength="10" />
+  </view>
+  <view class="form-group">
+    <label for="">手机号</label>
+    <input type="text" disabled="{{isOrder}}" value="{{phone}}" placeholder="用于接收通知" data-idx="phone" bindblur="inputChange" placeholder-class="placeholder" maxlength="11" />
+  </view>
+  <!-- <view class="form-group">
+    <label for="">到店时间</label>
+    <picker mode="time" value="{{checkInTime}}" disabled="{{isOrder}}" start="{{startCheckInTime}}" end="{{endCheckInTime}}" bindchange="timeChange">
+      <text class="{{checkInTime ? '':'placeholder'}}">{{checkInTime ? checkInTime:'预计办理入住时间'}}</text>
+    </picker>
+  </view> -->
+  <!-- <view class="form-group coin" wx:if="{{!isOrder && coinNumber}}">
+    <label for="">可用金币</label>
+    <text>{{integral}}金币，可抵{{integral}}元
+    </text>
+    <switch checked="{{isCoin}}" bindchange="coinChange" />
+  </view> -->
+</view>
+<!-- user end -->
+<!-- cost start -->
+<view class="cost">
+  <view class="row">
+    <block wx:if="{{!isOpenVip}}">
+      <view>
+        超级会员年费
+        <!-- <image class="icon-info" src="../../assets/image/icon-info.png" mode="aspectFill"></image> -->
+        <text class="del">原价￥{{costPrice}}/年</text>
+      </view>
+      <view class="tips">
+        <view>￥0.00</view>
+        <view>推广期免费</view>
+      </view>
+    </block>
+  </view>
+  <view class="row">
+    <view>住宿费（{{days}}晚，{{roomNumber}}间）</view>
+    <view>
+      <!-- <text wx:if="{{!isOpenVip}}">￥{{total_cost * roomNumber + vipPrice}}</text>
+      <text wx:else>￥{{total_cost * roomNumber}}</text> -->
+    </view>
+  </view>
+  <view class="row">
+    <block wx:for="{{priceDetail}}" wx:key="date">
+      <view class="date">{{item.date}}</view>
+      <view wx:if="{{item.salePrice}}">
+        <block wx:if="{{roomNumber > 1}}">{{roomNumber}}×</block>￥{{item.salePrice}}
+      </view>
+    </block>
+  </view>
+  <view class="row" wx:if="{{coupon_cost}}">
+    <view>5折特权</view>
+    <view class="deduction">- ￥{{coupon_cost}}</view>
+  </view>
+  <view class="row">
+    <view>发票服务费6%</view>
+    <view>￥{{invoice}}</view>
+  </view>
+  <!-- <view class="row" wx:if="{{coinNumber && isCoin}}">
+    <view>金币抵扣</view>
+    <view class="deduction">
+      <text wx:if="{{isOrder}}">- ￥{{use_gold}}</text>
+      <text wx:else>- ￥{{integral}}</text>
+    </view>
+  </view> -->
+  <view class="row">
+    <view>总计</view>
+    <view>
+      <block wx:if="{{totalPrice * roomNumber - coupon + invoice - integral < 0}}">￥0</block>
+      <block wx:else>￥{{totalPrice * roomNumber - coupon + invoice - integral + vipPrice}}        </block>
+    </view>
+  </view>
+</view>
+<!-- cose end -->
+<view class="remind">
+  <view>发票到酒店前台开具</view>
+  <view>本次消费可开具票面金额 ￥{{room.price * roomNumber}}</view>
+</view>
+<!-- pay start -->
+<view class="pay">
+  <view class="btn" bindtap="goPay">立即支付
+    <form bindsubmit="sendFromId" class="fromId" report-submit="{{true}}">
+      <button formType="submit" class='btn'></button>
+    </form>
+  </view>
+  <view class="label">实际付款</view>
+  <view class="price">
+    <block wx:if="{{isCoin}}">
+        <block wx:if="{{use_gold > 0}}">
+          <block wx:if="{{totalPrice * roomNumber - coupon + invoice - use_gold < 0}}">0</block>
+          <block wx:else>{{totalPrice * roomNumber - coupon + invoice - use_gold + vipPrice}}</block>
+        </block>
+        <block wx:else>
+          <block wx:if="{{totalPrice * roomNumber - coupon + invoice - integral < 0}}">0</block>
+          <block wx:else>{{totalPrice * roomNumber - coupon + invoice - integral + vipPrice}}</block>
+      </block>
+    </block>
+    <block wx:else>
+      <block wx:if="{{totalPrice * roomNumber - coupon + invoice - integral < 0}}">0</block>
+      <block wx:else>{{totalPrice * roomNumber - coupon + invoice - integral + vipPrice}}</block>
+    </block>
+  </view>
+</view>
+<!-- pay end -->

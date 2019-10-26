@@ -1,0 +1,54 @@
+<!-- 搜索页 -->
+<!-- search start -->
+<view class="search">
+  <view class="wrap">
+    <image class="icon-search" src="../../assets/image/icon-search.png" mode="aspectFill"></image>
+    <input type="text" placeholder="位置/酒店/关键词" placeholder-style="color:#888;" value="{{keyword}}" bindfocus="searchStart" bindinput="searchInput" bindblur="searchEnd" />
+    <image class="icon-clear-1" src="../../assets/image/icon-clear-1.png" mode="aspectFill" hidden="{{!keyword}}" bindtap="clearSearch" ></image>
+  </view>
+  <text class="btn" data-item="{{keyword}}" bindtap="chooseTag">搜索</text>
+</view>
+<!-- search end -->
+<!-- option start -->
+<view class="option" hidden="{{isSearch}}">
+  <view class="item" wx:if="{{historyList.length}}">
+    <view class="label">
+      历史搜索
+      <image class="icon-delete" src="../../assets/image/icon-delete.png" mode="aspectFill" bindtap="deleteHistory"></image>
+    </view>
+    <view class="tag">
+      <text data-item="{{item}}" wx:for="{{historyList}}" wx:key="index" bindtap="chooseTag">{{item}}</text>
+    </view> 
+  </view>
+  <block wx:for="{{tagList}}" wx:key="index">
+    <view class="item" wx:if="{{item.list.length}}">
+      <view class="label">{{item.title}}</view>
+      <view class="tag">
+        <block wx:if="{{index == 0}}">
+          <text wx:for="{{item.list}}" wx:key="index" data-item="{{item}}" bindtap="chooseHot">{{item}}</text>
+        </block>
+        <block wx:if="{{index == 1}}">
+          <text wx:for="{{item.list}}" wx:key="index" data-item="{{item}}" bindtap="chooseRegion">{{item}}</text>
+        </block>
+      </view> 
+    </view>
+  </block>
+</view>
+<!-- option end -->
+<!-- list start -->
+<view class="list" hidden="{{!isSearch}}">
+  <view class="item" wx:for="{{searchList}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="chooseHotel" >
+    <image class="icon-address-1" src="../../assets/image/icon-address-1.png" mode="aspectFill"></image>
+    <view class="row">
+      <view>
+        <searchHighLight keyword="{{keyword}}" name="{{item.name}}"></searchHighLight>
+      </view>
+      <view wx:if="{{item.bareaName}}">{{item.bareaName}}</view>
+    </view>
+    <view class="row" wx:if="{{item.address}}">
+      <view>{{item.address}}</view>
+      <view>{{item.distance}}km</view>
+    </view>
+  </view>
+</view>
+<!-- list end -->

@@ -1,0 +1,188 @@
+@import "../components/fromId/index.wxss";
+.page{
+    background: #F0F0F0;
+    position: relative;
+}
+.tabs{
+    width: 100%;
+    display: flex;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    background: #fff;
+    border-bottom: 8rpx solid #ddd;
+}
+.tabs .item{
+    flex: 1;
+}
+.tabs .item text{
+    color: #181818;
+    font-size: 30rpx;
+}
+.tabs .active text{
+    color: #FF6634;
+}
+@keyframes retate {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.content{
+    overflow: hidden;
+}
+.content scroll-view{
+    height: 1080rpx;
+}
+.no-order{
+    margin: 300rpx 0;
+    text-align: center;
+}
+.no-order image{
+    width: 244rpx;
+    height: 244rpx;
+    margin: 0 0 20rpx;
+}
+.no-order text{
+    color: #919191;
+    font-size: 30rpx;
+    display: block;
+}
+.content .list{
+    padding: 12rpx 16rpx 34rpx;
+}
+.list .item{
+    width: 100%;
+    margin: 0 0 20rpx;
+    background: #fff;
+    border-radius: 16rpx;
+}
+.list .head{
+    overflow: hidden;
+    height: 68rpx;
+    padding: 0 36rpx;
+    line-height: 68rpx;
+    border-bottom: 2rpx dashed #ECECEC;
+}
+.list .head .time{
+    float: left;
+    color: #919191;
+    font-size: 22rpx;
+}
+.list .head image{
+    width: 18rpx;
+    height: 18rpx;
+    margin: 0 16rpx 0 0;
+}
+.list .head .status{
+    float: right;
+    color: #333;
+    font-size: 26rpx;
+}
+.list .content{
+    overflow: hidden;
+    padding: 26rpx 34rpx 36rpx;
+}
+.list .desc{
+    float: left;
+}
+.list .desc .title{
+    color: #181818;
+    font-size: 36rpx;
+    line-height: 50rpx;
+    margin: 0 0 16rpx;
+}
+.list .desc .info{
+    color: #919191;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}
+.list .desc .info text{
+    display: block;
+    margin: 0 0 8rpx;
+}
+.list .content .price{
+    float: right;
+    color: #FF6634;
+    font-size: 30rpx;
+}
+.list .content .price text{
+    font-size: 24rpx;
+    margin: 0 8rpx 0 0;
+}
+.list .foot{
+    overflow: hidden;
+    padding: 0 34rpx;
+}
+.list .foot .time{
+    width: 340rpx;
+    float: left;
+    margin: 8rpx 0 0;
+}
+.list .foot .time image{
+    width: 18rpx;
+    height: 18rpx;
+    margin: 0 16rpx 0 0;
+}
+.list .foot .time text{
+    color: #FF6634;
+    font-size: 24rpx;
+}
+.list .foot .btns{
+    float: right;
+    overflow: hidden;
+    margin: 0 0 38rpx;
+}
+.list .foot .btns .cancel{
+    float: left;
+    width: 160rpx;
+    height: 56rpx;
+    color: #333;
+    font-size: 26rpx;
+    line-height: 56rpx;
+    position: relative;
+    text-align: center;
+    border-radius: 40rpx;
+    background: #F0F1F5;
+}
+.list .foot .btns .go-pay{
+    float: left;
+    width: 128rpx;
+    height: 56rpx;
+    color: #fff;
+    font-size: 26rpx;
+    line-height: 56rpx;
+    position: relative;
+    text-align: center;
+    margin: 0 0 0 22rpx;
+    background: #FF6634;
+    border-radius: 40rpx;
+}
+.list .foot .in{
+    float: left;
+    width: 134rpx;
+}
+.list .foot .in image{
+    width: 100%;
+    height: 114rpx;
+}
+.list .success .btns{
+    margin: 25rpx 0 0;
+}
+.content .period{
+    color: #919191;
+    font-size: 26rpx;
+    text-align: center;
+    margin: 14rpx 0 0;
+}
+.footer{
+    height: 128rpx;
+    text-align: center;
+    line-height: 128rpx;
+}
+.footer image{
+    width: 450rpx;
+    height: 42rpx;
+}

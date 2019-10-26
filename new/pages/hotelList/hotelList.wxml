@@ -1,0 +1,198 @@
+<view class="wrap">
+    <view class="search">
+        <navigator url="/pages/city/city" hover-class="none" class="item city">
+          <view class="text">{{cityName}}</view>
+          <image src="/assets/image/down-arrow.png" class="down-icon" />
+        </navigator>
+        <view class="item date" >
+          <view class="text">
+            <text>住{{today[0]}}-{{today[1]}}</text>
+            <text>离{{tomorrow[0]}}-{{tomorrow[1]}}</text>
+          </view>
+          <view class="today">今晚</view>
+        </view>
+        <view class="item form">
+          <view bindtap="goSearch">
+            <image src="/assets/image/search-icon.png" class="search-icon" />
+            <text class="{{search ? 'active' : ''}}">{{search ? search : '地名/酒店/关键词'}}</text>
+          </view>
+          <image src="/assets/image/close-icon.png" hidden="{{!search}}" bindtap="clearSearch" class="close-icon" />
+        </view>
+    </view>
+    <view class="select">
+        <view class="item {{(addressVisible || address != '位置区域') ? 'active' : ''}}">
+            <text bindtap="menuToggle" data-id="addressVisible">{{address}}</text>
+            <view class="icon">
+                <image src="/assets/image/{{(addressVisible || address != '位置区域') ? 'up-arrow' : 'down-arrow'}}.png" class="down-icon {{address != '位置区域' ? 'down' : ''}}" />
+            </view>
+            <view class="menu menu1" wx:if="{{addressVisible}}">
+                <view class="main">
+                    <view class="left">
+                        <block wx:for="{{addressList}}" wx:key="id">
+                            <block wx:if="{{index == 0 && distance}}">
+                                <view bindtap="menuItemTap" data-id="{{item.id}}" data-arr="addressList" class="item {{item.active ? 'active' : ''}}">
+                                    <image wx:if="{{item.active}}" src="/assets/image/hook-icon.png" />
+                                    <text>{{item.title}}</text>
+                                </view>
+                            </block>
+                            <block wx:if="{{index == 1}}">
+                                <view bindtap="menuItemTap" data-id="{{item.id}}" data-arr="addressList" class="item {{item.active ? 'active' : ''}}">
+                                    <image wx:if="{{item.active}}" src="/assets/image/hook-icon.png" />
+                                    <text>{{item.title}}</text>
+                                </view>
+                            </block>
+                        </block>
+                    </view>
+                    <view class="right">
+                        <view wx:for="{{addressList}}" wx:key="id">
+                            <block wx:if="{{index == 0 && distance}}">
+                                <scroll-view scroll-y scroll-with-animation wx:if="{{item.active}}">
+                                    <view wx:for="{{item.list}}" wx:for-item="j" bindtap="menuItemTap2" data-id="{{j.id}}" wx:key="title" class="item {{j.active ? 'active' : ''}}">
+                                        <text>{{j.title}}</text>
+                                        <image wx:if="{{j.active}}" src="/assets/image/hook-icon.png" />
+                                    </view>
+                                </scroll-view>
+                            </block>
+                            <block wx:if="{{index == 1}}">
+                                <scroll-view scroll-y scroll-with-animation wx:if="{{item.active}}">
+                                    <view wx:for="{{item.list}}" wx:for-item="j" bindtap="menuItemTap2" data-id="{{j.id}}" wx:key="title" class="item {{j.active ? 'active' : ''}}">
+                                        <text>{{j.title}}</text>
+                                        <image wx:if="{{j.active}}" src="/assets/image/hook-icon.png" />
+                                    </view>
+                                </scroll-view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+                <view class="mask" bindtap="menuToggle"></view>
+            </view>
+        </view>
+        <view class="item {{starLength || priceVisible ? 'active' : ''}}">
+            <text bindtap="menuToggle" data-id="priceVisible">星级/价格</text>
+            <view class="icon">
+                <image src="/assets/image/down-arrow.png" wx:if="{{!priceVisible}}" class="down-icon" />
+                <image src="/assets/image/up-arrow.png" wx:else class="up-icon" />
+            </view>
+            <view class="menu menu2" wx:if="{{priceVisible}}">
+                <view class="main">
+                    <view class="title">星级</view>
+                    <view class="menu-list">
+                        <view wx:for="{{priceList.star}}" bindtap="selectStar" data-idx="{{index}}" wx:key="title" class="item {{item.active ? 'active' : ''}}">{{item.title}}</view>
+                    </view>
+                    <view class="title">价格</view>
+                    <view class="menu-list">
+                        <view wx:for="{{priceList.price}}" bindtap="selectPrice" data-idx="{{index}}" wx:key="title" class="item {{item.active ? 'active' : ''}}">{{item.title}}</view>
+                    </view>
+                    <view class="btns">
+                        <view class="reset" bindtap="resetStar">重置</view>
+                        <view class="submit" bindtap="submitStar">完成</view>
+                    </view>
+                </view>
+                <view class="mask" bindtap="menuToggle"></view>
+            </view>
+        </view>
+        <view class="item {{sortTitle || sortVisible ? 'active' : ''}}">
+            <text bindtap="menuToggle" data-id="sortVisible">{{sortTitle ? sortTitle : '智能排序'}}</text>
+            <view class="icon">
+                <image src="/assets/image/down-arrow.png" wx:if="{{!sortVisible}}" class="down-icon" />
+                <image src="/assets/image/up-arrow.png" wx:else class="up-icon" />
+            </view>
+            <view class="menu menu3" wx:if="{{sortVisible}}">
+                <view class="main">
+                    <view wx:for="{{sortList}}" wx:key="title" bindtap="menuItemTap" data-id="{{item.id}}" data-arr="sortList" class="item {{item.active ? 'active' : ''}}">
+                        <text>{{item.title}}</text>
+                        <image src="/assets/image/hook-icon.png" wx:if="{{item.active}}" />
+                    </view>
+                </view>
+                <view class="mask" bindtap="menuToggle"></view>
+            </view>
+        </view>
+        <view class="item {{screenLength || screenVisible ? 'active' : ''}}">
+            <text bindtap="menuToggle" data-id="screenVisible">筛选</text>
+            <view class="icon">
+                <image src="/assets/image/down-arrow.png" wx:if="{{!screenVisible}}" class="down-icon" />
+                <image src="/assets/image/up-arrow.png" wx:else class="up-icon" />
+            </view>
+            <view class="menu menu4" wx:if="{{screenVisible}}">
+                <view class="main">
+                    <view class="left">
+                        <view wx:for="{{screenList}}" bindtap="menuItemTap" data-title="{{item.title}}" data-arr="screenList" wx:key="title" class="item {{item.active ? 'active' : ''}}">
+                            <image src="/assets/image/hook-icon.png" wx:if="{{item.active}}" />
+                            <text>{{item.title}}</text>
+                        </view>
+                    </view>
+                    <view class="right">
+                        <view class="menu-list">
+                            <block wx:for="{{screenList}}" wx:key="title">
+                                <block wx:if="{{item.active}}">
+                                    <view wx:for="{{item.list}}" wx:for-item="j" bindtap="selectScreen" data-title="{{j.title}}" wx:key="title" class="item {{j.active ? 'active' : ''}}">{{j.title}}</view>
+                                </block>
+                            </block>
+                        </view>
+                    </view>
+                    <view class="btns">
+                        <view class="reset" bindtap="resetScreen">重置</view>
+                        <view class="submit" bindtap="submitScreen">完成</view>
+                    </view>
+                </view>
+                <view class="mask" bindtap="menuToggle"></view>
+            </view>
+        </view>
+        <view class="clear"></view>
+    </view>
+    <view class="content">
+        <view class="list">
+            <block wx:for="{{dataList}}" wx:key="{[item.id}}">
+                <view wx:if="{{item.min_price}}" bindtap="goDetail" data-item="{{item}}" class="item">
+                    <view class="picture">
+                        <image mode="aspectFill" lazy-load="true" src="{{item.img[0]}}" />
+                    </view>
+                    <view class="desc">
+                        <view class="title">{{item.name}}</view>
+                        <view class="detail">
+                            <view class="info">
+                                <view class="star">
+                                    <block wx:if="{{item.score}}">
+                                        <text class="num">{{item.score}}</text><text class="text">分</text>
+                                    </block>
+                                    <text>{{item.star}}</text>
+                                </view>
+                                <view class="address">{{item.address}} · <block wx:if="{{distance}}">距您直线距离{{item.distance}}公里</block></view>
+                                <view class="member">
+                                    <image class="icon-vip" src="/assets/image/icon-vip.png" mode="aspectFill" />
+                                    <text>{{item.rebate * 10}}折特权</text>
+                                </view>
+                            </view>
+                            <view class="price" wx:if="{{item.min_price}}">
+                                <view class="old-price">
+                                <block wx:if="{{item.min_price > 0}}">
+                                    原价 <text class="icon">￥</text><text>{{item.min_price}}</text>起
+                                </block>
+                                <text class="icon" wx:else>{{item.min_price}}</text>
+                                </view>
+                                <view class="price-text">
+                                <block wx:if="{{item.price > 0}}">
+                                    <text class="icon">￥</text><text>{{item.price}}</text>起
+                                </block>
+                                <text class="icon" wx:else>{{item.price}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+
+            <view class="loading">
+                <block wx:if="{{loading}}">
+                    <image src="/assets/image/loading.png" class="loading-icon" />
+                    <text>正在加载...</text>
+                </block>
+                <block wx:else>
+                    <text wx:if="{{dataList.length > 0}}">没有更多了</text>
+                    <text wx:else>没有相关酒店</text>
+                </block>
+            </view>
+        </view>
+        <view class="backTop" wx:if="{{topVisible}}" bindtap="goTop"><image src="https://pbwci.qun.hk/Fhj49p_zicS6fV7lfP504t2NTf3X" /></view>
+    </view>
+</view>

@@ -1,0 +1,78 @@
+<!-- 个人中心页 -->
+<button wx:if="{{!isAuthorize}}" class="authorize auth-btn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" />
+<button wx:if="{{!isAuthorizeNumber}}" class="auth-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" />
+
+<view class="content">
+  <view class="top">
+    <!-- user start -->
+    <view class="user">
+      <image class="bg" src="../../assets/image/account-user-bg.png" mode="aspectFill"></image>
+      <view class="info">
+        <image class="avatar" src="{{user.avatarUrl ? user.avatarUrl : '../../assets/image/icon-account-avatar.png'}}" mode="aspectFill" />
+        <view class="nickname">{{user.nickName ? user.nickName : '用户名'}}</view>
+        <view class="vip">
+          <block wx:if="{{isOpenVip}}">有效期至{{user.date}}</block>
+          <block wx:else>订酒店，能赚钱</block>
+        </view>
+      </view>
+    </view>
+    <!-- user end -->
+  </view>
+  <!-- order start -->
+  <view class="order">
+    <navigator url="/pages/accountOrderList/accountOrderList?state=">
+      <view class="icon">
+        <image src="../../assets/image/icon-account-tab-all.png" mode="aspectFill"></image>
+      </view>
+      <view>全部订单</view>
+    </navigator>
+    <navigator url="/pages/accountOrderList/accountOrderList?state=1">
+      <view class="icon">
+        <text class="num" wx:if="{{orderNum > 0}}">{{orderNum}}</text>
+        <image src="../../assets/image/icon-account-tab-unpaid.png" mode="aspectFill" />
+      </view>
+      <view>待支付</view>
+    </navigator>
+    <navigator url="/pages/accountOrderList/accountOrderList?state=10">
+      <view class="icon">
+        <image src="../../assets/image/icon-account-tab-checkin.png" mode="aspectFill"></image>
+      </view>
+      <view>待入住</view>
+    </navigator>
+  </view>
+  <!-- order end -->
+  <!-- nav start -->
+  <!-- <view class="nav">
+    <view class="row" bindtap="goGold">
+      <view>我的金币</view>
+      <view>
+        <text>{{goldNum}}</text>
+        <image class="icon-right" src="../../assets/image/icon-right.png" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="row" bindtap="goVip">
+      <view>我的特权</view>
+      <view>
+        <image class="icon-right" src="../../assets/image/icon-right.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view> -->
+  <!-- nav end -->
+  <!-- follow start -->
+  <view class="follow">
+    <view class="head">金币商城 · 酒店会员卡管理 ·  活动推荐</view>
+    <view class="row">
+      <view class="text">关注“旅行钱包”微信公众号</view>
+      <view class="text">首次关注送10元红包</view>
+      <button class="btn" open-type="contact">回复"1"关注</button>
+    </view>
+  </view>
+  <!-- follow end -->
+  <!-- contact start -->
+  <view class="contact" bindtap="goCall">
+    <image class="icon-call" src="../../assets/image/icon-call.png" mode="aspectFill"></image>
+    联系客服
+  </view>
+  <!-- contact end -->
+</view>
+<image class="logo-colour" src="../../assets/image/icon-logo-colour.png" mode="aspectFill"></image>

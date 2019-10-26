@@ -1,0 +1,27 @@
+<view class="content">
+  <view class="score">
+    打分
+    <image class="icon-star" src="/assets/image/icon-star{{(index + 1) <= score ? '-active' : ''}}.png" mode="aspectFill" wx:for="{{5}}" wx:key="{{index}}" data-index="{{index}}" bindtap="chooseScore" ></image>
+    <text class="number" hidden="{{!score}}">{{score}}分</text>
+  </view>
+  <textarea class="text" placeholder="写出您真实的想法…" placeholder-style="color:#b5b5b5" maxlength="{{countLimit}}" value="{{content}}" bindinput="contentChange"></textarea>
+  <view class="count">{{count}}/{{countLimit}}</view>
+  <view class="photo-list">
+    <view class="item" wx:for="{{photoList}}" wx:key="{{index}}">
+      <image class="photo" src="{{item}}" mode="aspectFill" data-index="{{index}}" bindtap="previewImage" ></image>
+      <image class="icon-delete" src="/assets/image/icon-photo-delete.png" mode="aspectFill" data-index="{{index}}" bindtap="deleteImage" ></image>
+    </view>
+    <view class="item {{photoList.length === 4 ? 'hide' : ''}}">
+      <view class="null" bindtap="chooseImage">
+        <image class="icon-photo" src="/assets/image/icon-photo.png" mode="aspectFill" ></image>
+      </view>
+    </view>
+  </view>
+  <view class="anonymous">
+    <image class="icon-checkbox" src="/assets/image/icon-checkbox{{isAnonymous ? '-checked' : ''}}.png" mode="aspectFill" bindtap="anonymous" ></image><text bindtap="anonymous">匿名评价</text>
+  </view>
+</view>
+<view class="btn">
+  <text bindtap="cancel">取消</text>
+  <text bindtap="submit">发布</text>
+</view>

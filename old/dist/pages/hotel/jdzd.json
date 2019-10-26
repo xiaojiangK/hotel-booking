@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "酒店列表",
+  "usingComponents": {
+    "city": "../components/city/index",
+    "calendar": "../components/calendar/index"
+  }
+}

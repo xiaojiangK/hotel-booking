@@ -1,0 +1,34 @@
+<!--pages/hotel/jdzdDetail.wxml-->
+<view class="page">
+  <view class="hotel-info">
+    <view class='hotel-title'>{{hotel_detail.hotelname}}</view>
+
+    <view class='hotel-addr'>
+      <view class='hotel-desc-left'>
+        <view class='hotel-type'>{{hotel_detail.address}}</view>
+      </view>
+      <view class='hotel-desc-right'>
+
+        <view class="{{hotel_detail.rebate !='0%'?'hotel-point':'view_block'}}">返利{{hotel_detail.rebate}}起</view>
+      </view>
+    </view>
+  </view>
+  <view class='scon-panel'>
+    <view class="{{(hotel_detail.wx_target==1)?'scon-mp-title':'view_block'}}">酒店官方预订小程序</view>
+    <view class="{{(hotel_detail.wx_target==2)?'scon-oa-title':'view_block'}}">酒店官方预订公众号</view>
+    <view class='scon-desc'>没有中间商赚差价</view>
+    <view class='scon-img'>
+      <image src='https://u.showboom.cn/ucenter/wxsmall/sulvqrcode/getMpHotelQRcode?uid={{hotel_detail.uid}}&hotel_id={{hotel_detail.id}}' data-src='https://u.showboom.cn/ucenter/wxsmall/sulvqrcode/getMpHotelQRcode?uid={{hotel_detail.uid}}&hotel_id={{hotel_detail.id}}' bindtap="previewImage" mode="widthFix"></image>
+      </view>
+    <view class="{{(hotel_detail.wx_target==1)?'scon-note':'view_block'}}">
+      长按识别二维码，立即预订
+    </view>
+    <view class="{{(hotel_detail.wx_target==2)?'scon-oa':'view_block'}}">
+      <image src="/images/img_wechatcode_guide.png" mode="widthFix" ></image>
+    </view>
+
+  </view>
+  <view class='scon-notice'>
+     
+  </view>
+</view>

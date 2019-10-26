@@ -1,0 +1,67 @@
+/**
+ *  个人中心订单列表页
+ */
+@import './../../template/fromId/index.wxss';
+page {
+  background: #f2f2f2;
+}
+.page{
+  background: #F0F0F0;
+  position: relative;
+}
+.tabs{
+  width: 100%;
+  display: flex;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #fff;
+  border-bottom: 8rpx solid #ddd;
+}
+.tabs .item{
+  flex: 1;
+}
+.tabs .item text{
+  color: #181818;
+  font-size: 30rpx;
+}
+.tabs .active text{
+  color: #FF6634;
+}
+@keyframes retate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.content{
+  overflow: hidden;
+}
+.content scroll-view{
+  height: 1080rpx;
+}
+.no-order{
+  margin: 300rpx 0;
+  text-align: center;
+}
+.no-order image{
+  width: 244rpx;
+  height: 244rpx;
+  margin: 0 0 20rpx;
+}
+.no-order text{
+  color: #919191;
+  font-size: 30rpx;
+  display: block;
+}
+.content .list{
+  padding: 12rpx 16rpx 34rpx;
+}
+.content .period{
+  color: #919191;
+  font-size: 26rpx;
+  text-align: center;
+  margin: 14rpx 0 0;
+}

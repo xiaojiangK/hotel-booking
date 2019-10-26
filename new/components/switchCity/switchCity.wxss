@@ -1,0 +1,29 @@
+/**
+ *  选择城市
+ */
+.city {
+  border-radius: 18rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background:rgba(61, 66, 81, .8);
+}
+.city .icon-location {
+  display: inline-block;
+  margin: 0 21rpx -4rpx 29rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+.city .name {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+.city .switch {
+  float: right;
+  margin-top: 36rpx;
+  margin-right: 27rpx;
+  color: #ffbb41;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 28rpx;
+}

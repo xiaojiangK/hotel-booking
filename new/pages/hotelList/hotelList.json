@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "duration": "/components/duration/duration",
+    "switchCity": "/components/switchCity/switchCity"
+  },
+  "navigationBarTitleText": "酒店列表"
+}

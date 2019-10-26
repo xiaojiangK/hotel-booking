@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/city/city",
+    "pages/hotelList/hotelList",
+    "pages/hotelDetails/hotelDetails",
+    "pages/calendar/index",
+    "pages/hotelDetailsAlbum/hotelDetailsAlbum",
+    "pages/hotelOrderConfirm/hotelOrderConfirm",
+    "pages/booking/booking",
+    "pages/wallet/wallet",
+    "pages/account/account",
+    "pages/accountOrderList/accountOrderList",
+    "pages/accountOrderDetails/accountOrderDetails",
+    "pages/accountCoin/accountCoin",
+    "pages/accountCoinWithdraw/accountCoinWithdraw",
+    "pages/accountPrivilege/accountPrivilege",
+    "pages/search/search",
+    "pages/comment/comment",
+    "pages/submitComment/submitComment"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#232533",
+    "navigationBarTitleText": "今夜特价",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#e5e5e5",
+    "selectedColor": "#ffbb41",
+    "backgroundColor": "#2f3240",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/image/icon-tabBar-index.png",
+        "selectedIconPath": "assets/image/icon-tabBar-index-selected.png"
+      },
+      {
+        "text": "酒店直订",
+        "pagePath": "pages/booking/booking",
+        "iconPath": "assets/image/icon-tabBar-booking.png",
+        "selectedIconPath": "assets/image/icon-tabBar-booking-selected.png"
+      },
+      {
+        "text": "我的钱包",
+        "pagePath": "pages/account/account",
+        "iconPath": "assets/image/icon-tabBar-account.png",
+        "selectedIconPath": "assets/image/icon-tabBar-account-selected.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "给您推荐更多5折特价酒店"
+    }
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx970c288350572a5f"
+  ]
+}

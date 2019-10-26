@@ -1,0 +1,126 @@
+/**
+ *  酒店列表页
+ */
+.top {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  background: #232533;
+}
+/*** 入住期限 ***/
+.duration {
+  margin: 32rpx 60rpx 0;
+}
+/*** 城市选择 ***/
+.city {
+  margin: 26rpx 60rpx 0;
+}
+.list-mask {
+  position: relative;
+  z-index: 100;
+  padding-top: 42rpx;
+  height: 18rpx;
+  background: #232533;
+}
+.list-mask::after {
+  content: '';
+  display: block;
+  border-radius: 18rpx 18rpx 0 0;
+  height: 18rpx;
+  background: #fff;
+}
+/*** 酒店列表 ***/
+.hotel {
+  position: absolute;
+  top: 282rpx;
+  bottom: 0;
+  z-index: 500;
+  background: #fff;
+}
+.hotel.scroll-top {
+  top: 156rpx;
+}
+.hotel .loading {
+  color: #929292;
+  font-size: 28rpx;
+  font-weight: 400;
+  text-align: center;
+}
+.hotel .loading .text-1{
+  padding: 300rpx 0;
+}
+.hotel .loading .text-2{
+  padding: 60rpx 0;
+}
+.hotel .icon-loading {
+  display: block;
+  margin: 0 auto 34rpx;
+  width: 64rpx;
+  height: 64rpx;
+}
+.list .item {
+  padding: 32rpx 32rpx 40rpx;
+}
+.list .item .picture {
+  margin-bottom: 24rpx;
+  border-radius: 18rpx;
+  width: 686rpx;
+  height: 360rpx;
+  background: #f8f8f8;
+  overflow: hidden;
+}
+.list .item .picture .photo {
+  width: 100%;
+  height: 100%;
+}
+.list .item .picture .icon-bitmap {
+  margin: 106rpx 253rpx;
+}
+.list .item .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19rpx;
+  overflow: hidden;
+}
+.list .item .name {
+  color: #333;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+.list .item .price {
+  color: #cc9650;
+  font-size: 26rpx;
+  font-weight: 400;
+}
+.list .item .price::before {
+  content: '￥';
+  font-size: 24rpx;
+}
+.list .item .price text {
+  margin: 0 10rpx;
+  font-size: 42rpx;
+  font-weight: 500;
+}
+.list .item .distance {
+  color: #929292;
+  font-size: 26rpx;
+  font-weight: 400;
+}
+.list .item .vip {
+  position: relative;
+  color: #6D4727;
+  font-size: 26rpx;
+  font-weight: 400;
+  line-height: 32rpx;
+}
+.list .item .vip image {
+  position: absolute;
+  top: 0;
+  left: -120rpx;
+}
+.list .item .vip text {
+  position: relative;
+  z-index: 10;
+  line-height: 32rpx;
+}

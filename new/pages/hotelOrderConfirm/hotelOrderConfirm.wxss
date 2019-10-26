@@ -1,0 +1,270 @@
+/**
+ *  订单确认页
+ */
+ page {
+  padding-bottom: 130rpx;
+  background: #f2f2f2;
+}
+.top {
+  padding: 20rpx;
+  background: #232533;
+}
+/*** 房间信息 ***/
+.room {
+  border-radius: 8rpx;
+  padding: 25rpx 0;
+  background: #fff;
+}
+.room .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22rpx;
+  padding: 0 23rpx 0 35rpx;
+  overflow: hidden;
+}
+.room .row .name {
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.room .row .price {
+  color: #cc9650;
+  font-size: 42rpx;
+  font-weight: 500;
+}
+.room .row .price::before {
+  content: '￥';
+  margin-right: 12rpx;
+  font-size: 24rpx;
+}
+.room .row .desc {
+  color: #5a5a5a;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.room .row .vip {
+  position: relative;
+  height: 32rpx;
+  line-height: 24rpx;
+}
+.room .row .vip image {
+  position: absolute;
+  top: 0;
+  left: -120rpx;
+}
+.room .row .vip text {
+  position: relative;
+  z-index: 10;
+  color: #6d4727;
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 32rpx;
+}
+.room .duration {
+  border-top: 1rpx solid #e5e5e5;
+  padding-top: 34rpx;
+}
+.room .date {
+  margin-left: 35rpx;
+  margin-right: 12rpx; 
+  color: #181818;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.room .status {
+  margin-right: 35rpx;
+  color: #929292;
+  font-size: 24rpx;
+  font-weight: 400; 
+}
+.room .sum {
+  color: #4289ff;
+  font-size: 24rpx;
+  font-weight: 400;
+}
+.top .explain {
+  margin: 21rpx 11rpx 4rpx;
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 34rpx;
+}
+/*** 用户信息 ***/
+.user .form-group {
+  position: relative;
+  border-bottom: 1rpx solid #e5e5e5;
+  height: 89rpx;
+  line-height: 89rpx;
+  background: #fff;
+}
+.user .form-group label {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 21rpx;
+  width: 179rpx;
+  color: #b2b2b2;
+  font-size: 30rpx;
+  font-weight: 400;
+  line-height: 89rpx;
+}
+.user .form-group picker {
+  display: inline-block;
+  vertical-align: top;
+  width: 550rpx;
+}
+.user .form-group picker text,
+.user .form-group input,
+.user .form-group.coin text {
+  display: inline-block;
+  vertical-align: top;
+  height: 49rpx;
+  padding: 20rpx 0;
+  width: 550rpx;
+  color: #181818;
+  font-size: 30rpx;
+  font-weight: 400;
+  overflow: hidden;
+  line-height: 49rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.user .coin {
+  margin-top: 20rpx;
+}
+.user .form-group.coin text {
+  width: 380rpx;
+  color: #333;
+  font-weight: bold;
+}
+.user .coin switch {
+  float: right;
+  margin-right: 45rpx;
+}
+/*** 费用信息 ***/
+.cost {
+  margin-top: 20rpx;
+  background: #fff;
+}
+.cost .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 54rpx 0 21rpx;
+  color: #181818;
+  font-size: 30rpx;
+  font-weight: 400;
+  line-height: 80rpx;
+}
+.cost .row:first-of-type {
+  background: #fff7e9;
+}
+.cost .row view:nth-of-type(2) {
+  font-weight: bold;
+}
+.cost .row.white{
+  background: #fff;
+}
+.cost .row .del {
+  margin-left: 34rpx;
+  color: #8e8e8e;
+  font-size: 24rpx;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+.cost .row .tips {
+  color: #ff3b36;
+  line-height: 1;
+  text-align: right;
+}
+.cost .row .tips view:first-of-type {
+  padding-top: 13rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.cost .row .tips view:last-of-type {
+  padding-top: 11rpx;
+  font-size: 22rpx;
+  font-weight: 400;
+}
+.cost .row .date {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+}
+.cost .row .breakfast {
+  margin-left: 73rpx;
+  color: #929292;
+}
+.cost .row view:nth-of-type(2) text {
+  font-weight: bold;
+}
+.cost .icon-info {
+  margin-left: 20rpx;
+  margin-bottom: -3rpx;
+}
+.cost .row .deduction {
+  color: #ff3b36;
+}
+.remind {
+  padding: 34rpx 34rpx 37rpx;
+  color: #929292;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  text-align: center;
+}
+/*** 支付信息 ***/
+.pay {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+  background: #fff;
+}
+.pay .label {
+  margin-left: 33rpx;
+  padding-top: 35rpx;
+  color: #929292;
+  font-size: 24rpx;
+  font-weight: 400;
+}
+.pay .price {
+  margin-top: 14rpx;
+  margin-left: 30rpx;
+  color: #cc9650;
+  font-size: 42rpx;
+  font-weight: 500;
+}
+.pay .price::before {
+  content: '￥';
+  margin-right: 5rpx;
+  font-size: 24rpx;
+}
+.pay .btn {
+  float: right;
+  width: 312rpx;
+  color: #fff;
+  position: relative;
+  font-size: 36rpx;
+  line-height: 130rpx;
+  text-align: center;
+  background: #cc9650;
+}
+.fromId{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.fromId button{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  z-index: 9;
+  position: absolute;
+}
+.fromId button::after{
+  border:none;
+}

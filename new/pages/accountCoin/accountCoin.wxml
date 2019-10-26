@@ -1,0 +1,38 @@
+<!-- 个人中心金币页 -->
+<view class="page">
+  <view class="header">
+    <view class="current">当前金币（1金币=1元）</view>
+    <view class="price">{{gold}}</view>
+  </view>
+  <view class="container">
+    <view class="title">收支明细</view>
+    <view class="list">
+      <view class="item" wx:for="{{logs}}" wx:key="created_at">
+        <view class="left">
+          <view class="title">{{item.desc}}</view>
+          <view class="date">{{item.created_at}}</view>
+        </view>
+        <view class="right {{item.add ? 'add' : ''}}">{{item.add ? '+': ''}}{{item.incr}}</view>
+      </view>
+    </view>
+    <view class="logo">
+      <image src="../../assets/image/logo-gray.png" />
+    </view>
+  </view>
+  <view class="pupup" wx:if="{{pupupVisible}}">
+    <view class="maks" bindtap="closepupup"></view>
+    <view class="explain">
+      <view class="title">金币规则</view>
+      <view class="content">
+        <text>1、1金币等于1元价值；</text>
+        <text>2、预定酒店并入住成功后返金币；</text>
+        <text>3、金币可用于提现或消费抵现使用；</text>
+        <text>4、超过30金币以上部分即可提现；</text>
+        <text>5、提现金额将于24小时内到帐；</text>
+        <text>6、秀豹酒店直订平台拥有最终解释权；</text>
+      </view>
+      <view class="btn" bindtap="closepupup">我知道了</view>
+    </view>
+  </view>
+  <view class="footer" bindtap="goExtract" data-gold="{{gold}}">提现</view>
+</view>

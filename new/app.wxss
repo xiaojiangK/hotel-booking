@@ -1,0 +1,91 @@
+/**
+ *  通用样式
+ */
+page {
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100%;
+  line-height: 1;
+  background: #fff;
+}
+/*** 输入项占位符 ***/
+.placeholder {
+  color: #999;
+}
+/*** 图标 ***/
+.icon-info {
+  width: 24rpx;
+  height: 24rpx;
+}
+.icon-address {
+  width: 20rpx;
+  height: 24rpx;
+}
+.icon-address-1 {
+  width: 36rpx;
+  height: 36rpx;
+}
+.icon-camera {
+  width: 26rpx;
+  height: 22rpx;
+}
+.icon-phone {
+  width: 40rpx;
+  height: 36rpx;
+}
+.icon-call {
+  width: 30rpx;
+  height: 30rpx;
+}
+.icon-right {
+  width: 11rpx;
+  height: 19rpx;
+}
+.icon-right-1 {
+  width: 24rpx;
+  height: 24rpx;
+}
+.icon-vip {
+  width: 276rpx;
+  height: 32rpx;
+}
+.icon-bitmap {
+  width: 180rpx;
+  height: 148rpx;
+}
+.icon-invoice {
+  width: 60rpx;
+  height: 60rpx;
+}
+.icon-half {
+  width: 60rpx;
+  height: 60rpx;
+}
+.icon-clock {
+  width: 60rpx;
+  height: 60rpx;
+}
+.icon-search {
+  width: 38rpx;
+  height: 38rpx;
+}
+.icon-search-1 {
+  width: 36rpx;
+  height: 36rpx;
+}
+.icon-delete {
+  width: 36rpx;
+  height: 38rpx;
+}
+.icon-clear {
+  width: 30rpx;
+  height: 30rpx;
+}
+.icon-clear-1 {
+  width: 36rpx;
+  height: 36rpx;
+}
+.icon-building {
+  width: 36rpx;
+  height: 36rpx;
+}

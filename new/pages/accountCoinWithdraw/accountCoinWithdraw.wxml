@@ -1,0 +1,23 @@
+<!-- 个人中心金币提现页 -->
+<view class="page">
+  <view class="header">
+    <view class="current">当前金币（1金币=1元）</view>
+    <view class="price">{{gold}}</view>
+  </view>
+  <view class="follow">
+    <view class="content">
+      <view class="title">提现请到“秀豹酒店直订”微信公众号</view>
+      <view class="desc">订单通知、特价活动不错过</view>
+    </view>
+  </view>
+  <view class="main">
+    <view class="qrcode">
+      <image mode="aspectFill" bindtap="preview" lazy-load="true" src="{{qrcode}}" />
+    </view>
+    <view class="desc">
+      <text>提现步骤</text>
+      <text>进入公众号 - 会员中心 - 我的钱包</text>
+    </view>
+    <view class="btn" bindtap="preview">保存图片</view>
+  </view>
+</view>

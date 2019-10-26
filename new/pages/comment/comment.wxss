@@ -1,0 +1,7 @@
+page {
+  padding: 16rpx 0;
+  background: #fff;
+}
+.comment-item {
+  border-bottom: none!important;
+}

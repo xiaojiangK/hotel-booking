@@ -1,0 +1,144 @@
+<view class="page">
+    <view class="order-status">
+        <block wx:if="{{details.order_state == 1}}">
+            <view class="title">待支付</view>
+            <view class="time">剩余支付时间 {{countDown[0]}}:{{countDown[1]}}</view>
+        </block>
+        <block wx:if="{{details.order_state == 4}}">
+            <view class="title">已取消</view>
+            <view class="time cancel">感谢您使用秀豹酒店直订！</view>
+        </block>
+        <block wx:if="{{details.order_state == 2 || details.order_state == 3}}">
+            <view class="title">已支付</view>
+            <view class="time">酒店已确认</view>
+        </block>
+        <block wx:if="{{details.order_state == 5}}">
+            <view class="title">已完成</view>
+        </block>
+        <block wx:if="{{details.order_state == 6}}">
+            <view class="title">已退款</view>
+            <view class="time cancel">感谢您使用秀豹酒店直订！</view>
+        </block>
+    </view>
+    <view class="sum-price">
+        <view class="item">
+            <text class="title">订单金额</text>
+            <text class="price"><text>￥</text>{{details.order_total_sum}}</text>
+        </view>
+        <view class="item">
+            <text class="title">返还</text>
+            <text class="price"><text>￥</text>{{details.return_gold}}</text>
+            <text class="desc" wx:if="{{details.order_state != 5}}">（入住后发放）</text>
+            <text class="desc succ" wx:else>（已发放）</text>
+        </view>
+    </view>
+    <view class="detail-list">
+        <view class="fold-btn"><view class="btn" bindtap="seeDetail">{{detailVisible ? '收起' : '查看'}}账单明细</view></view>
+        <view class="list {{detailVisible ? 'show' : ''}}">
+            <view class="item first" wx:if="{{details.open_vip == 0}}">
+                <view class="left">
+                    <text>超级会员年费</text>
+                    <image src="/images/help.png" />
+                </view>
+                <view class="right">￥49.00</view>
+            </view>
+            <view class="item">
+                <view class="left">住宿费（{{details.unit_price.length}}晚，{{details.number_of_rooms}}间）</view>
+                <view class="right">￥{{details.total / 100}}</view>
+            </view>
+            <view class="time">
+                <view class="time-item" wx:for="{{details.unit_price}}" wx:key="date">
+                    <view class="date">{{item.date}}</view>
+                    <view class="price" wx:if="{{item.salePrice}}">￥{{item.salePrice / 100}}</view>
+                </view>
+                <view class="time-item" wx:if="{{details.open_vip == 0}}">
+                    <view class="date">开通会员</view>
+                    <view class="price">￥49</view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">实付金额</view>
+                <view class="right">￥{{details.total_sum}}</view>
+            </view>
+            <view class="item gold" wx:if="{{details.gold_coin > 0}}">
+                <view class="left">
+                    <text>金币抵扣</text>
+                </view>
+                <view class="right">- ￥{{details.gold_coin}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="control">
+        <view class="btns">
+            <block wx:if="{{details.order_state == 1}}">
+                <view class="cancel" data-id="{{details.id}}" data-state="{{details.order_state}}" bindtap="cancelOrder">取消订单</view>
+            </block>
+            <block wx:if="{{details.order_state == 1}}">
+                <view class="to-pay" bindtap="goPay">去支付</view>
+            </block>
+            <block wx:if="{{details.order_state != 1}}">
+                <view class="to-pay" bindtap="goReserve">再次预订</view>
+            </block>
+        </view>
+        <view class="tip">*如需取消或变更订单请联系商家，到期未入住酒店将扣除全额房费，房间按时保留，14:00前到店可能需要等房。</view>
+    </view>
+    <view class="info">
+        <view class="title" bindtap="goDetail">酒店信息</view>
+        <view class="content">
+            <view class="room">
+                <view class="title">{{details.hotel_name}}</view>
+                <view class="desc">{{details.address}}</view>
+            </view>
+            <view class="menu">
+                <view class="item" bindtap="goMap">
+                    <image src="/images/navigation-icon.png" />
+                    <text>导航至酒店</text>
+                </view>
+                <view class="item" bindtap="goCall">
+                    <image src="/images/tel-icon.png" />
+                    <text>联系商家</text>
+                </view>
+            </view>
+        </view>
+        <view class="title" bindtap="goDetail" data-id="{{details.room_type}}">房型信息</view>
+        <view class="list">
+            <view class="item">
+                <view class="title">房型</view>
+                <view class="desc">{{details.room_name}}</view>
+            </view>
+            <view class="item">
+                <view class="title">入住时间</view>
+                <view class="desc">{{details.check_in_time}} - {{details.departure_time}}，共{{details.unit_price.length}}晚{{details.number_of_rooms}}间</view>
+            </view>
+            <view class="item">
+                <view class="title">入住人</view>
+                <view class="desc">
+                    <block wx:for="{{details.room}}" wx:key="*this">
+                        {{item.contacts}}<block wx:if="{{index != details.username.length - 1}}">,</block>
+                    </block>
+                </view>
+            </view>
+            <view class="item">
+                <view class="title">联系电话</view>
+                <view class="desc">{{details.cell_phone}}</view>
+            </view>
+            <view class="item">
+                <view class="title">预计到店时间</view>
+                <view class="desc">{{details.check_in_time}}{{details.estimated_time}}之前<view>(不影响酒店留房)</view></view>
+            </view>
+        </view>
+    </view>
+    <view class="info">
+        <view class="title">预订信息</view>
+        <view class="list">
+            <view class="item">
+                <view class="title">订单号</view>
+                <view class="desc">{{details.order_no}}</view>
+            </view>
+            <view class="item">
+                <view class="title">下单时间</view>
+                <view class="desc">{{details.create_at}}</view>
+            </view>
+        </view>
+    </view>
+</view>

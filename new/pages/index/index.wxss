@@ -1,0 +1,252 @@
+/**
+ *  今夜特价页
+ */
+page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #232533;
+}
+page .authorize {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+/*** Banner大图 ***/
+.banner image {
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  height: 560rpx;
+}
+/*** 入住期限 ***/
+.duration {
+  margin: -275rpx 60rpx 0;
+}
+/*** 城市选择 ***/
+.city {
+  margin: 26rpx 60rpx 0;
+}
+/*** 参数 ***/
+.param {
+  margin: 26rpx 60rpx 0;
+  border-radius: 18rpx;
+  padding: 32rpx 30rpx 32rpx 0;
+  background:rgba(61, 66, 81, .8);
+}
+.param .label {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 26rpx;
+  height: 36rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+.param .desc {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 26rpx;
+  height: 36rpx;
+  color:#65686f;
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 36rpx;
+}
+.param.choose .label {
+  width: 530rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 32rpx;
+}
+.param .icon-right-1,
+.param .icon-clear {
+  float: right;
+  margin-top: 6rpx;
+}
+/*** 倒计时 ***/
+.countdown {
+  margin: 26rpx 60rpx 0;
+  border-radius: 18rpx;
+  height: 100rpx;
+  font-weight: 400;
+  text-align: center;
+  background:rgba(61, 66, 81, .8);
+}
+.countdown .label {
+  padding: 14rpx 0 4rpx;
+  color: #ffbb41;
+  font-size: 24rpx;
+}
+.countdown .time {
+  color: #fff;
+  font-size: 44rpx;
+}
+/*** 查询 ***/
+.query {
+  margin: 32rpx 60rpx 0;
+  border-radius: 18rpx;
+  height: 100rpx;
+  color: #242424;
+  font-size: 38rpx;
+  font-weight: 500;
+  line-height: 100rpx;
+  text-align: center;
+  background: #ffbb41;
+}
+/*** 开售时间 ***/
+.opening-time {
+  margin: 30rpx 0;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 400;
+  text-align: center;
+}
+/*** 广告位 ***/
+.ad {
+  position: relative;
+}
+.ad .ad-img {
+  vertical-align: top;
+  width: 100%;
+  height: 140rpx;
+}
+.ad .contact {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+/*** 底部 ***/
+.bottom {
+  margin: 30rpx 0 38rpx;
+  color: #777c82;
+  font-weight: 400;
+  text-align: center;
+}
+.bottom .label {
+  position: relative;
+  font-size: 26rpx;
+}
+.bottom .label::before,
+.bottom .label::after {
+  content: '';
+  position: absolute;
+  top: 18rpx;
+  width: 66rpx;
+  height: 1rpx;
+  background: #777c82;
+}
+.bottom .label::before {
+  left: -126rpx;
+}
+.bottom .label::after {
+  right: -126rpx;
+}
+.bottom .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 38rpx;
+  padding: 0 50rpx;
+  font-size: 24rpx;
+}
+.bottom .row .col {
+  flex: 1;
+}
+.bottom .row image {
+  margin-bottom: 12rpx;
+}
+/*** 选项面板 ***/
+.choose-panel {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background:rgba(0, 0, 0, .3);
+}
+.choose-panel.show {
+  top: 0;
+}
+.choose-panel .wrap {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+}
+.choose-panel .option {
+  padding: 0 32rpx;
+}
+.choose-panel .item .label {
+  margin-bottom: 26rpx;
+  padding-top: 22rpx;
+  height: 44rpx;
+  color: #333;
+  font-size: 32rpx;
+  line-height: 44rpx;
+}
+.choose-panel .item .price {
+  margin-left: 30rpx;
+  color: #ff6634;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.choose-panel .tag text {
+  display: inline-block;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+  width: 164rpx;
+  height: 72rpx;
+  color: #595758;
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 72rpx;
+  text-align: center;
+  background: #f4f5f9;
+}
+.choose-panel .tag text.active {
+  color: #ff6634;
+}
+.choose-panel .tag text:nth-child(4n) {
+  margin-right: 0;
+}
+.choose-panel .slide {
+  margin: 8rpx 30rpx 44rpx;
+}
+.choose-panel .slider-desc {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14rpx;
+  color: #999;
+  font-size: 20rpx;
+  font-weight: 400;
+} 
+.choose-panel .btn {
+  display: flex;
+  height: 96rpx;
+}
+.choose-panel .btn text {
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 96rpx;
+  text-align: center;
+}
+.choose-panel .btn text:first-child {
+  flex: 1;
+  border-top: 1rpx solid #e4e8e9;
+}
+.choose-panel .btn text:last-child {
+  flex: 2;
+  border-top: 1rpx solid #ffbb41;
+  background: #ffbb41;
+}

@@ -1,0 +1,55 @@
+<view class="page">
+    <button wx:if="{{!isAuthorize}}" class="authorize" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" />
+    <button wx:if="{{!isAuthorizeNumber}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" />
+    <view class="navigate">
+        <view class="title"><text>个人中心</text></view>
+    </view>
+    <view class="user">
+        <view class="user-box {{!isOpenVip ? 'noMember' : ''}}">
+            <view class="avatar">
+                <image mode="aspectFill" src="{{user.avatarUrl}}" />
+            </view>
+            <view class="username">
+                <view class="name">{{user.nickName}}</view>
+                <view class="date" wx:if="{{isOpenVip}}">有效期至{{user.date}}</view>
+                <view class="date" wx:else bindtap="openVip">
+                    加入超级会员可返利，点击开通 >
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="order-menu">
+        <navigator url="../order/list?state=" hover-class="none" class="item">
+            <view class="icon">
+                <image src="/images/order-icon.png" />
+            </view>
+            <view class="title">全部订单</view>
+        </navigator>
+        <navigator url="../order/list?state=1" hover-class="none" class="item">
+            <view class="icon">
+                <text class="num" wx:if="{{orderNum > 0}}">{{orderNum}}</text>
+                <image src="/images/order-icon2.png" />
+            </view>
+            <view class="title">待支付</view>
+        </navigator>
+        <navigator url="../order/list?state=10" hover-class="none" class="item">
+            <view class="icon">
+                <image src="/images/order-icon3.png" />
+            </view>
+            <view class="title">待入住</view>
+        </navigator>
+    </view>
+    <view class="my">
+        <view class="item" bindtap="goGold" data-gold="{{goldNum}}">
+            <view class="title">我的金币</view>
+            <view class="number" wx:if="{{goldNum}}">{{goldNum}}</view>
+        </view>
+        <view class="item" bindtap="openVip">
+            <view class="title">我的特权</view>
+        </view>
+    </view>
+    <view class="contact" bindtap="goCall">
+        <image src="/images/user-tel.png" />
+        <text>联系客服</text>
+    </view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "order-item": "/components/orderItem/orderItem"
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "我的订单",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}

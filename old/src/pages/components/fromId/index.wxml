@@ -1,0 +1,8 @@
+<template name="fromId">
+    <form bindsubmit="sendFromId" class="fromId" report-submit="{{true}}">
+        <button formType="submit" class='btn'>
+                <view class='btn-id'>
+                </view>
+        </button>
+    </form>
+</template>

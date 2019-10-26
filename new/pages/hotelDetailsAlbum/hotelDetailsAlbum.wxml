@@ -1,0 +1,8 @@
+<!-- 酒店详情相册页 -->
+<view class="page">
+  <view class="grids">
+    <view class="grid" wx:for="{{hotel.img}}" wx:key="index" bindtap="goPreview" data-src="{{item}}">
+      <image src="{{item}}" lazy-load="{{true}}" mode="aspectFill" lazy-load="true"/>
+    </view>
+  </view>
+</view>

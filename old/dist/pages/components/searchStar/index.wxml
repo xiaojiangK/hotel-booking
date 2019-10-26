@@ -1,0 +1,20 @@
+
+<view class="searchStar">
+    <view class="maks" wx:if="{{visible}}" bindtap="closeStar"></view>
+    <view class="container" style="bottom: {{visible ? 0 : '-100%'}}">
+        <view class="content">
+            <view class="title">星级</view>
+            <view class="list">
+                <view wx:for="{{star}}" class="item {{item.active ? 'active' : ''}}" wx:key="title" data-idx="{{index}}" bindtap="selectStar">{{item.title}}</view>
+            </view>
+            <view class="title">价格</view>
+            <view class="list">
+                <view wx:for="{{price}}" class="item {{item.active ? 'active' : ''}}" wx:key="title" data-idx="{{index}}" bindtap="selectPrice">{{item.title}}</view>
+            </view>
+        </view>
+        <view class="btns">
+            <view class="reset" bindtap="resetStar">重置</view>
+            <view class="submit" bindtap="submitStar">完成</view>
+        </view>
+    </view>
+</view>

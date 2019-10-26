@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "选择城市",
+  "navigationBarTextStyle": "black"
+}

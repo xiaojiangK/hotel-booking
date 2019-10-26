@@ -1,0 +1,62 @@
+<import src="../components/fromId/index.wxml" />
+<view class="page">
+    <view class="tabs">
+        <view wx:for="{{tabs}}" bindtap="tabSwitch" data-id="{{item.id}}" wx:key="title" class="item {{item.active ? 'active' : ''}}">
+            <text>{{item.title}}</text>
+        </view>
+    </view>
+    <view class="content">
+        <view class="list">
+            <view class="item" wx:for="{{list}}" wx:key="id">
+                <view class="head">
+                    <view class="time">
+                        <image src="/images/time-icon.png" />
+                        <text>下单时间：{{item.create_at}}</text>
+                    </view>
+                    <view class="status">
+                        <block wx:if="{{item.order_state == 1}}">待支付</block>
+                        <block wx:elif="{{item.order_state == 2 || item.order_state == 3}}">已支付</block>
+                        <block wx:elif="{{item.order_state == 4}}">已取消</block>
+                        <block wx:elif="{{item.order_state == 5}}">已完成</block>
+                        <block wx:elif="{{item.order_state == 6}}">已退款</block>
+                    </view>
+                </view>
+                <navigator url="detail?id={{item.id}}" hover-class="none" class="content">
+                    <view class="desc">
+                        <view class="title">{{item.hotel_name}}</view>
+                        <view class="info">
+                            <text wx:if="{{item.room_name}}">{{item.room_name}}</text>
+                            <text>{{item.check_in_time}} 至 {{item.departure_time}} {{item.unit_price.length}}晚/{{item.number_of_rooms}}间</text>
+                        </view>
+                    </view>
+                    <view class="price"><text>￥</text>{{item.order_total_sum}}</view>
+                </navigator>
+                <view class="foot {{item.order_state == 5 ? 'success' : ''}}">
+                    <view class="time" wx:if="{{item.order_state == 1 || item.order_state == 2 || item.order_state == 3 || item.order_state == 5}}">
+                        <image src="/images/success-icon.png" />
+                        <text wx:if="{{item.order_state == 1}}">剩余支付时间 {{countDown[0]}}:{{countDown[1]}}</text>
+                        <view wx:if="{{item.order_state == 5}}" class="in">
+                            <image src="/images/in-icon.png" />
+                        </view>
+                        <text wx:if="{{item.order_state == 2 || item.order_state == 3}}">酒店已确认</text>
+                    </view>
+                    <view class="btns">
+                        <view class="cancel" bindtap="cancelOrder" data-item="{{item}}" wx:if="{{item.order_state == 1}}">取消订单
+                            <template is="fromId" />
+                        </view>
+                        <view class="cancel" bindtap="goReserve" data-data="{{item}}" wx:else>再次预订<template is="fromId" /></view>
+                        <view class="go-pay" bindtap="goPay" data-data="{{item}}" wx:if="{{item.order_state == 1}}">去支付<template is="fromId" /></view>
+                    </view>
+                </view>
+            </view>
+            <view class="no-order" wx:if="{{list.length == 0}}">
+                <image src="https://pbwci.qun.hk/FnRx6MvBK1sFrkWmg8Rd19Rr1FaI" />
+                <text>没有相应订单记录</text>
+            </view>
+            <view class="period" wx:else>就这么多，赶紧下单吧</view>
+        </view>
+    </view>
+    <view class="footer">
+        <image src="/images/bom-logo.png" />
+    </view>
+</view>

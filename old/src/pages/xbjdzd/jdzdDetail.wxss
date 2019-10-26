@@ -1,0 +1,180 @@
+@import "../components/searchStar/index.wxss";
+@import "../components/fromId/index.wxss";
+
+/* pages/hotel/jdzdDetail.wxss */
+
+.page {
+  background-color: #fff;
+  min-height: 960rpx;
+  padding: 20rpx 15rpx;
+}
+
+.hotel-info {
+  margin: 0 auto;
+  margin-bottom: 15rpx;
+  padding: 20rpx 0;
+  width: calc(100% - 8rpx);
+  position: relative;
+
+}
+
+.hotel-info .hotel-title {
+  font-size: 36rpx;
+  line-height: 48rpx;
+  padding: 0 30rpx 0 30rpx;
+  font-weight: bold;
+}
+
+.hotel-info .hotel-desc {
+  font-size: 22rpx;
+  color: #999;
+  height: 40rpx;
+}
+
+.hotel-info .hotel-desc-left {
+  display: inline-block;
+  padding-left: 30rpx;
+  width: calc(60% - 30rpx);
+  text-align: left;
+  line-height: 40rpx;
+}
+
+.hotel-info  .hotel-desc-right {
+  display: inline-block;
+  padding-right: 30rpx;
+  width: calc(40% - 30rpx);
+  text-align: right;
+  line-height: 40rpx;
+}
+
+.hotel-info .hotel-desc .hotel-fan {
+  display: inline-block;
+  color: orange;
+  font-weight: bold;
+}
+
+.hotel-info .hotel-desc .hotel-type {
+  display: inline-block;
+}
+
+.hotel-info .hotel-desc .hotel-price {
+  display: inline-block;
+  color: orange;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+.hotel-info .hotel-addr {
+  font-size: 22rpx;
+  color: #999;
+  height: 40rpx;
+
+}
+
+.hotel-info .hotel-addr .hotel-img {
+  display: inline-block;
+}
+
+.hotel-info .hotel-addr .hotel-point {
+  display: inline-block;
+  color: rgb(235,122,83);
+  background-color: rgb(252,234,227);
+ position: absolute;
+  padding: 0 16rpx;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+  right: 20rpx;
+  bottom: 30rpx;  
+
+}
+
+/* ------  */
+
+.page .scon-panel {
+  padding: 20rpx 0;
+}
+
+.scon-panel .scon-mp-title {
+  font-size: 42rpx;
+  font-weight: bold;
+  color: rgb(35,153,233);
+  text-align: center;
+  line-height: 80rpx;
+}
+.scon-panel .scon-oa-title {
+  font-size: 42rpx;
+  font-weight: bold;
+  color: rgb(83,194,141);
+  text-align: center;
+  line-height: 80rpx;
+}
+.scon-panel .scon-desc {
+  font-size: 32rpx;
+  color: #181818;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.scon-panel .scon-img {
+  text-align: center;
+  width: 100%;
+}
+
+.scon-panel .scon-img image {
+  margin: 20rpx auto;
+  width: 320rpx;
+  height: 320rpx;
+}
+
+.scon-panel .scon-note {
+  text-align: center;
+  margin: 20rpx auto;
+}
+
+.scon-panel .scon-note image {
+  display: inline-block;
+  margin-bottom: -4rpx;
+  height: 32rpx;
+  width: 32rpx;
+}
+
+.scon-panel .scon-oa {
+  text-align: center;
+  margin: 20rpx auto;
+}
+
+.scon-panel .scon-oa image {
+  display: inline-block;
+  margin-bottom: -4rpx;
+  width: 70%;
+
+}
+.scon-panel .scon-notice {
+  font-size: 22rpx;
+  width: 80%;
+  color: #ff6634;
+  text-align: center;
+  margin: 90rpx auto 0 auto;
+  padding: 30rpx 40rpx;
+  border: 1rpx solid#ff6634;
+  border-radius: 70rpx;
+  background-color: #ffeae6;
+}
+
+.warning-mark {
+  display: inline-block;
+  text-align: center;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 64rpx;
+  background-color: #ff6634;
+  color: #fff;
+  line-height: 36rpx;
+  font-weight: bold;
+}
+
+.view_block{
+  display: none;
+}

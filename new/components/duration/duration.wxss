@@ -1,0 +1,47 @@
+/**
+ *  入住期限
+ */
+.duration {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+.duration .start,
+.duration .sum,
+.duration .end {
+  display: inline-block;
+  vertical-align: top;
+}
+.duration .start {
+  text-align: left;
+}
+.duration .sum {
+  text-align: center;
+}
+.duration .end {
+  text-align: right;
+}
+.duration .status {
+  color: #c1c1c1;
+  font-size: 22rpx;
+}
+.duration .date {
+  margin-top: 20rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+.duration .sum .title {
+  color: #ffbb41;
+  font-size: 22rpx;
+}
+.duration .sum .day {
+  margin: 15rpx auto 0;
+  border-radius: 47rpx;
+  width: 128rpx;
+  height: 47rpx;
+  color: #2f3240;
+  font-size: 28rpx;
+  line-height: 47rpx;
+  background: #ffbb41;
+}

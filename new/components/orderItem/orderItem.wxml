@@ -1,0 +1,52 @@
+<view class="order-item">
+  <view class="item">
+    <view class="head">
+      <view class="time">
+      <image src="/assets/image/time-icon.png" />
+      <text>下单时间：{{data.create_at}}</text>
+      </view>
+      <view class="status">
+      <block wx:if="{{data.status == 1}}">待支付</block>
+      <block wx:elif="{{data.status == 2}}">已支付</block>
+      <block wx:elif="{{data.status == 3}}">已取消</block>
+      <block wx:elif="{{data.status == 4}}">已完成</block>
+      <block wx:elif="{{data.status == 5}}">已入住</block>
+      <block wx:elif="{{data.status == 7}}">已退款</block>
+      <block wx:elif="{{data.status == 10}}">已确认</block>
+      </view>
+    </view>
+    <navigator url="../accountOrderDetails/accountOrderDetails?id={{data.id}}" hover-class="none" class="content">
+        <view class="desc">
+            <view class="title">{{data.seller_name}}</view>
+            <view class="info">
+                <text wx:if="{{data.room_type}}">{{data.room_type}}</text>
+                <text>{{data.check_in_time}} 至 {{data.departure_time}} {{days}}晚/{{data.num}}间</text>
+            </view>
+        </view>
+        <view class="price"><text>￥</text>{{data.total_cost}}</view>
+    </navigator>
+    <view class="foot {{data.status == 5 ? 'success' : ''}}">
+      <view class="time" wx:if="{{data.status != 3 && data.status != 4 && data.status != 7}}">
+        <view wx:if="{{data.status == 5}}" class="in">
+          <image src="/assets/image/in-icon.png" />
+        </view>
+        <image wx:else src="/assets/image/success-icon.png" />
+        <text wx:if="{{data.status == 1}}">剩余支付时间 {{time}}</text>
+        <text wx:if="{{data.status == 2}}">等待酒店确认</text>
+        <text wx:if="{{data.status == 10}}">酒店已确认</text>
+      </view>
+      <view class="btns">
+        <block wx:if="{{data.status == '4'}}">
+          <view class="oprate-btn white" bindtap="goComment" wx:if="{{!isAssess}}">去评价</view>
+          <view class="oprate-btn orange" bindtap="viewComment" wx:if="{{isAssess && isReply}}">查看回复</view>
+          <view class="oprate-btn" bindtap="viewComment" wx:if="{{isAssess && !isReply}}">查看评价</view>
+        </block>
+        <block wx:if="{{data.status == 1}}">
+          <view class="oprate-btn" bindtap="cancelOrder">取消订单</view>
+          <view class="oprate-btn orange" bindtap="goPay">去支付</view>
+        </block>
+        <view class="oprate-btn" bindtap="goReserve" wx:else>再次预订</view>
+      </view>
+    </view>
+  </view>
+</view>

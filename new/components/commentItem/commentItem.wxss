@@ -1,0 +1,104 @@
+.comment-item {
+  border-bottom: 2rpx solid #e0e0e0;
+  padding: 18rpx 30rpx 0;
+}
+/*** 评论 ***/
+.comment {
+  padding-left: 112rpx;
+  padding-bottom: 26rpx;
+  font-weight: 400;
+}
+.comment .avatar {
+  float: left;
+  margin-left: -112rpx;
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  background: #e0e0e0;
+}
+.comment .head {
+  height: 90rpx;
+}
+.comment .head .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+  padding-top: 4rpx;
+}
+.comment .head .nickname {
+  color: #fd9900;
+  font-size: 32rpx;
+}
+.comment .head .type {
+  color: #999;
+  font-size: 24rpx;
+  line-height: 32rpx;
+}
+.comment .head .score {
+  color: #333;
+  font-size: 24rpx;
+}
+.comment .head .score .icon-star {
+  vertical-align: top;
+  margin-top: 2rpx;
+  width: 22rpx;
+  height: 22rpx;
+}
+.comment .head .score .icon-star:first-of-type {
+  margin-left: 10rpx;
+}
+.comment .content {
+  color: #333;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.comment .photo {
+  margin-bottom: -6rpx;
+  width: 500rpx;
+}
+.comment .photo.col-1 image {
+  vertical-align: top;
+  margin-bottom: 6rpx;
+  width: 500rpx;
+  height: 500rpx;
+  background: #d8d8d8;
+}
+.comment .photo.col-2 {
+  width: 350rpx;
+}
+.comment .photo.col-2 image,
+.comment .photo.col-3 image {
+  vertical-align: top;
+  margin-right: 6rpx;
+  margin-bottom: 6rpx;
+  width: 160rpx;
+  height: 160rpx;
+  background: #d8d8d8;
+}
+.comment .state {
+  margin-top: 26rpx;
+  color: #999;
+  font-size: 22rpx;
+  line-height: 22rpx;
+}
+/*** 回复 ***/
+.reply {
+  padding-left: 112rpx;
+}
+.reply .item {
+  padding-bottom: 26rpx;
+}
+.reply .item .content {
+  color: #333;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.reply .item .speaker {
+  color: #fd9900;
+}
+.reply .item .state {
+  margin-top: 26rpx;
+  color: #999;
+  font-size: 22rpx;
+  line-height: 22rpx;
+}

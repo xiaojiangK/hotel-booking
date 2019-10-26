@@ -1,0 +1,44 @@
+<!-- 酒店列表页 -->
+<view class="top">
+  <!-- duration start -->
+  <duration id="duration"></duration>
+  <!-- duration end -->
+  <!-- city start -->
+  <switchCity id="switchCity" city="{{city}}" wx:if="{{!isScrollTop}}"></switchCity>
+  <!-- city end -->
+  <view class="list-mask"></view>
+</view>
+<scroll-view class="hotel {{isScrollTop? 'scroll-top':''}}" scroll-y bindscroll="scroll">
+  <!-- list start -->
+  <view class="list">
+    <navigator class="item" wx:for="{{hotelList}}" wx:key="index" url="/pages/hotelDetails/hotelDetails?id={{item.id}}">
+      <view class="picture">
+        <image class="{{item.ewm_logo ? 'photo' : 'icon-bitmap'}}" lazy-load="{{true}}" src="{{item.ewm_logo ? item.ewm_logo : '../../assets/image/icon-bitmap.png'}}" mode="aspectFill"></image>
+      </view>
+      <view class="row">
+        <view class="name">{{item.name}}</view>
+        <view class="price">
+          <text>{{item.price}}</text>起
+        </view>
+      </view>
+      <view class="row">
+        <view class="distance">距您{{item.distance}}km</view>
+        <view class="vip">
+          <image class="icon-vip" src="../../assets/image/icon-vip.png" mode="aspectFill"></image>
+          <text>￥{{item.rebate}} 起</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="loading">
+    <view class="text-1" wx:if="{{loading}}">
+      <image class="icon-loading" src="../../assets/image/icon-loading.gif" mode="aspectFill"></image>
+      <text>正在加载酒店信息……</text>
+    </view>
+    <block wx:else>
+      <view class="text-2" wx:if="{{hotelList.length > 0}}">没有更多了</view>
+      <view class="text-1" wx:else>没有相关酒店</view>
+    </block>
+  </view>
+  <!-- list end -->
+</scroll-view>

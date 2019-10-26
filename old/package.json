@@ -1,0 +1,33 @@
+{
+  "name": "leopard-hotel",
+  "version": "1.1.1",
+  "description": "leopard-hotel",
+  "main": "dist/app.wxss",
+  "directories": {
+    "pages": "pages"
+  },
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.qiuxinpay.cn/wujiang/leopard-hotel/"
+  },
+  "homepage": "http://git.qiuxinpay.cn/wujiang/leopard-hotel",
+  "keywords": [
+    "weui",
+    "wxss"
+  ],
+  "author": "Qiuxin xiaojiang",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.5.1",
+    "gulp": "^3.9.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-header": "^1.8.8",
+    "gulp-less": "^3.1.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2"
+  }
+}

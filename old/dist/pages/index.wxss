@@ -1,0 +1,272 @@
+@import "components/fromId/index.wxss";
+
+.page>button{
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+.page .userInfo{
+    z-index: 99999;
+}
+.banner{
+    width: 100%;
+    height: 428rpx;
+    position: relative;
+}
+.banner swiper{
+    height: 428rpx;
+}
+.banner image{
+    width: 100%;
+    height: 428rpx;
+}
+.banner .tip{
+    position: absolute;
+    top: 0;
+    width: 456rpx;
+    height: 50rpx;
+    right: 12rpx;
+    color: #fff;
+    font-size: 24rpx;
+    line-height: 60rpx;
+    text-align: center;
+    background: url('https://pbwci.qun.hk/Fub7h1lLW-A8Hi-LI5iMtTKaBBEE') center center no-repeat;
+    background-size: 100% 100%;
+}
+.banner .tip .spot{
+    width: 38rpx;
+    height: 14rpx;
+    margin: 0 10rpx;
+    vertical-align: middle;
+}
+.banner .tip .close{
+    width: 20rpx;
+    height: 20rpx;
+    margin: 6rpx 0 0 16rpx;
+}
+.banner .tabs{
+    position: absolute;
+    left: 50%;
+    bottom: -2rpx;
+    width: 718rpx;
+  /*  background: rgba(0, 0, 0, .5); */
+    border-top-left-radius: 8rpx;
+    border-top-right-radius: 8rpx;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.banner .tabs .item{
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.banner .tabs .white_left{
+    position: relative;
+    z-index: 2;
+    background: url('https://s.heimilink.com/static/images/tab_selsec_left.png') center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.banner .tabs .white_right{
+    position: relative;
+    z-index: 2;
+    background: url('https://s.heimilink.com/static/images/tab_selsec_right.png') center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.banner .tabs .title_white{
+    color: #fff;
+    font-size: 36rpx;
+    line-height: 34rpx;
+    margin: 24rpx 0 8rpx;
+}
+.banner .tabs .subTitle_white{
+    color: #fff;
+    font-size: 22rpx;
+    margin: 0 0 8rpx;
+    line-height: 22rpx;
+}
+.banner .tabs .white{
+    position: relative;
+    z-index: 2;
+    background: url('https://pbwci.qun.hk/FjG98p8ZdzVMMW-e3uAA94f175ip') center center no-repeat;
+    background-size: 100% 100%;
+}
+.banner .tabs .black{
+    position: absolute;
+    width: 54%;
+    left: 46%;
+    z-index: 1;
+    background: rgba(0,0,0,.5);
+}
+.banner .tabs .title{
+    color: #333;
+    font-size: 36rpx;
+    line-height: 34rpx;
+    margin: 24rpx 0 8rpx;
+}
+.banner .tabs .subTitle{
+    color: #606060;
+    font-size: 22rpx;
+    margin: 0 0 8rpx;
+    line-height: 22rpx;
+}
+.banner .tabs .black{
+    border-top-right-radius: 8rpx;
+}
+.banner .tabs .black .title{
+    color: #fff;
+}
+.banner .tabs .black .subTitle{
+    color: #fff;
+}
+.form{
+    width: 678rpx;
+    background: #fff;
+    position: relative;
+    margin: 0 auto 50rpx;
+    padding: 18rpx 20rpx 35rpx;
+}
+.form .adress{
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0 22rpx;
+    border-bottom: 1px solid #f3f3f3;
+}
+.form .adress .title{
+    width: 540rpx;
+    float: left;
+    color: #333;
+    font-size: 44rpx;
+    margin: 8rpx 0 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.form .adress .icon{
+    float: right;
+    margin: 0 9rpx 0 0;
+    text-align: center
+}
+.form .adress .icon text{
+    font-size: 24rpx;
+    color: #ff6634;
+    display: block;
+}
+.form .adress .icon image{
+    width: 36rpx;
+    height: 36rpx;
+    display: block;
+    margin: 0 auto 5rpx;
+}
+.form .search{
+    color: #ccc;
+    font-size: 32rpx;
+    padding: 35rpx 0;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #f3f3f3;
+    background: url('https://pbwci.qun.hk/FrPW-iJgKElkFPsWDhcI4xMjacv2') right center no-repeat;
+    background-size: 11rpx 19rpx;
+}
+.form .search_1{
+    color: #ccc;
+    font-size: 32rpx;
+    padding: 35rpx 0;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #f3f3f3;
+    
+    background-size: 11rpx 19rpx;
+}
+
+.form .search .text{
+    width: 90%;
+    float: left;
+}
+.form .active{
+    color: #333;
+}
+.form .search image{
+    float: right;
+    width: 24rpx;
+    height: 24rpx;
+    display: none;
+    margin: 10rpx 30rpx 0 0;
+}
+.form .active image{
+    display: block;
+}
+.form .date{
+    padding: 22rpx 0;
+}
+.form .date .item{
+    margin: 0 55rpx 0 0;
+    float: left;
+}
+.form .search .day{
+    margin: 30rpx 0 0;
+}
+.form .date .item:last-child .title{
+    line-height: 80rpx;
+}
+.form .date .title{
+    color: #333;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    margin: 0 0 24rpx;
+}
+.form .date .time{
+    color: #333;
+    font-size: 36rpx;
+}
+.form .date .time text{
+    font-size: 24rpx;
+    margin: 0 0 0 15rpx;
+}
+.form .submit{
+    background: #ff6634;
+    position: relative;
+    font-size: 38rpx;
+    margin: 35rpx 0 0;
+}
+.form .submit .jdzdbtn{
+   color: #fef4e9;
+    border: solid 1px #da7c0c;
+    background: #f78d1d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);  
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.searchinput{
+    color: #ccc;
+    font-size: 32rpx;
+    padding: 35rpx 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #f3f3f3;
+
+}
+.header_view_hide{
+  display: none;
+}
+.header_view_show{
+  display: block;
+}
+.jdzd_index_title_img{
+  width:100%;
+}
+.jdzd_content{
+  margin-top:30rpx;
+  
+}

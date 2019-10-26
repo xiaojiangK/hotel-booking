@@ -1,0 +1,10 @@
+<view class="page">
+    <view class="grids">
+        <block wx:for="{{grids}}" wx:key="title">
+            <view class="grid" bindtap="goPreview" data-src="{{item.src}}">
+                <image lazy-load="true" mode="aspectFill" src="{{item.src}}" />
+                <view class="title">{{item.title}}</view>
+            </view>
+        </block>
+    </view>
+</view>

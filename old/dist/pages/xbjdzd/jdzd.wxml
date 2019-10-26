@@ -1,0 +1,63 @@
+<import src="../components/fromId/index.wxml" />
+
+<view class="wrap">
+
+    <view class="banner">
+        <image mode="aspectFill" src="/images/jdzd_banner.png" />
+    </view>
+  
+    <view class="content">
+    <view class="fanliTag">返利酒店</view>
+    <view class="list">
+    <view class="item" >
+<navigator url="jdzdDetail?page=index&hotelname=广州长广酒店&address=广州 番禺区 大石建华路2号，临近三枝乡水道大石桥侧&rebate=10%&wx_target=1&id=429&uid={{uid}}" class="text" hover-class="none"> 
+                <view class="picture">
+                    <image mode="widthFix" class="mupic" src="https://dimg13.c-ctrip.com/images/fd/hotel/g4/M06/31/4F/CggYHVYD0TuAS8MMAAH1RxJc-G8001_R_550_412.jpg" />
+                    <view class="rant">返利10%</view>
+                </view>
+                <view class="desc">
+                  <view class="desc_1">
+                    <view class="title">广州长广酒店</view>
+                    <view class="minipro"><image  src="/images/icon_wechatapplet.png" />酒店官方小程序</view>
+                  </view>
+                </view>
+</navigator>
+
+    </view>
+    </view>
+    <view class="fanliTag">其他酒店</view>
+
+        <view class="list">
+            <view wx:for="{{dataList}}" wx:key="{[item.id}}" bindtap="goDetail" data-id="{{item.id}}"  data-hotelName="{{item.hotelName}}"  data-address="{{item.address}}" data-rebate="{{item.rebate}}"  data-wx_target="{{item.wx_target}}" data-uid="{{uid}}"   class="item">
+                <view class="picture">
+                    <image mode="widthFix" class="mupic" src="{{item.hotel_img}}" />
+                   
+                </view>
+                <view class="desc">
+                  <view class="desc_1">
+                    <view class="title">{{item.hotelName}}</view>
+                    <view class="minipro"><image  src="/images/icon_wechatapplet.png" /> {{item.wx_target_cn}}</view>
+                  </view>
+                </view>
+                <template is="fromId" />
+            </view>
+        </view>
+            <view class="loading">
+                <block wx:if="{{loading}}">
+                    <image src="/images/loading.png" class="loading-icon" />
+                    <text>正在加载...</text>
+                </block>
+                <block wx:if="{{!loading && dataList.length < size}}">
+                    <text>没有更多了</text>
+                </block>
+            </view>        
+        <view class="backTop" wx:if="{{topVisible}}" bindtap="goTop"><image src="https://pbwci.qun.hk/Fhj49p_zicS6fV7lfP504t2NTf3X" /></view>
+    </view>
+
+    <calendar id="rili" />
+
+    <view class='search-wrapper' wx:if="{{cityVisible}}">
+        <city data="{{city}}" binddetail="cityChange" my-city config="{{config}}" />
+    </view>
+
+</view>

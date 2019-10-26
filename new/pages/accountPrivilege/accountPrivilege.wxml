@@ -1,0 +1,2 @@
+<!-- 个人中心用户页 -->
+<web-view src="{{baseWebURL}}/wechart/open/vipMembersNew"></web-view>

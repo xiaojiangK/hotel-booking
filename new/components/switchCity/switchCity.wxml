@@ -1,0 +1,8 @@
+<!-- 选择城市 -->
+<!-- city start -->
+<view class="city">
+  <image class="icon-location" src="../../assets/image/icon-location.png" mode="aspectFill"></image>
+  <text class="name">{{city}}</text>
+  <navigator class="switch" url="/pages/city/city">切换城市</navigator>
+</view>
+<!-- city end -->

@@ -1,0 +1,18 @@
+<!-- 入住期限 -->
+<!-- duration start -->
+<view class="duration">
+  <view class="start">
+    <view class="status">今夜入住</view>
+    <view class="date">{{today}}</view>
+  </view>
+  <view class="sum">
+    <view class="title">不可修改</view>
+    <!-- <view class="day">共{{days}}晚</view> -->
+    <view class="day">今晚</view>
+  </view>
+  <view class="end">
+    <view class="status">明天离店</view>
+    <view class="date">{{tomorrow}}</view>
+  </view>
+</view>
+<!-- duration end -->

@@ -1,0 +1,101 @@
+<!-- 今夜特价页 -->
+<button wx:if="{{!isAuthorize}}" class="authorize" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" />
+<view class="content">
+  <!-- banner start -->
+  <view class="banner">
+    <image src="../../assets/image/index-banner.jpg" mode="aspectFill"></image>
+  </view>
+  <!-- banner end -->
+  <!-- duration start -->
+  <duration id="duration"></duration>
+  <!-- duration end -->
+  <!-- city start -->
+  <switchCity id="switchCity" city="{{city}}"></switchCity>
+  <!-- city end -->
+  <!-- param start -->
+  <view class="param search" bindtap="search">
+    <text class="label">{{searchText === '' && regionText == '' &&  hotText == '' ? '我的附近' : searchText + regionText + hotText}}</text>
+    <text class="desc" wx:if="{{!searchText && !regionText && !hotText}}">搜索酒店/地名/关键词</text>
+    <image class="icon-right-1" src="../../assets/image/icon-right-1.png" mode="aspectFill" hidden="{{searchText || regionText || hotText}}" ></image>
+    <image class="icon-clear" src="../../assets/image/icon-clear.png" mode="aspectFill" hidden="{{!searchText && !regionText && !hotText}}" catchtap="clearSearch" ></image>
+  </view>
+  <view class="param choose" bindtap="toggleChoose">
+    <text class="{{chooseText === '' ? 'desc' : 'label'}}">{{chooseText === '' ? '选择星级/价格' : chooseText}}</text>
+    <image class="icon-right-1" src="../../assets/image/icon-right-1.png" mode="aspectFill" hidden="{{chooseText}}" ></image>
+    <image class="icon-clear" src="../../assets/image/icon-clear.png" mode="aspectFill" hidden="{{!chooseText}}" catchtap="clearChoose" ></image>
+  </view>
+  <!-- param end -->
+  <!-- countdown start -->
+  <view class="countdown" wx:if="{{onSale === 'N'}}">
+    <view class="label">开售倒计时</view>
+    <view class="time">{{countdownStr}}</view>
+  </view>
+  <!-- countdown end -->
+  <!-- query start -->
+  <view class="query" wx:if="{{onSale === 'Y'}}" bindtap="query">查询酒店</view>
+  <!-- query end -->
+  <!-- opening time start -->
+  <view class="opening-time">每晚开售时间 18:00 - 22:00</view>
+  <!-- opening time end -->
+  <!-- ad start -->
+  <view class="ad">
+    <image class="ad-img" src="/assets/image/index-ad.png" mode="aspectFill" ></image>
+    <button class="contact" open-type="contact"></button>
+  </view>
+  <!-- ad end -->
+</view>
+<!-- bottom start -->
+<view class="bottom">
+  <text class="label">订酒店 · 能赚钱</text>
+  <view class="row">
+    <view class="col">
+      <image class="icon-invoice" src="../../assets/image/icon-invoice.png" mode="aspectFill"></image>
+      <view>全额发票</view>
+    </view>
+    <view class="col">
+      <image class="icon-half" src="../../assets/image/icon-half.png" mode="aspectFill"></image>
+      <view>5折特惠</view>
+    </view>
+    <view class="col">
+      <image class="icon-clock" src="../../assets/image/icon-clock.png" mode="aspectFill"></image>
+      <view>每日18点开售</view>
+    </view>
+  </view>
+</view>
+<!-- bottom end -->
+<!-- choose panel start -->
+<view class="choose-panel {{isChoose ? 'show' : ''}}" bindtap="toggleChoose" >
+  <view class="wrap" catchtap="stopTop">
+    <view class="option">
+      <view class="item">
+        <view class="label">星级</view>
+        <view class="tag">
+          <text class="{{item.status ? 'active' : ''}}" wx:for="{{starList}}" wx:key="*this" data-idx="{{index}}" bindtap="chooseStar">{{item.title}}</text>
+        </view>
+      </view>
+      <view class="item">
+        <view class="label">
+          价格
+          <text class="price" hidden="{{!price}}">{{priceText}}</text>
+        </view>
+        <view class="tag">
+          <text class="{{index === priceIndex ? 'active' : ''}}" wx:for="{{priceList}}" wx:key="*this" data-index="{{index}}" data-min="{{item.min}}" data-max="{{item.max}}" bindtap="choosePrice">{{item.text}}</text>
+        </view>
+      </view>
+      <view class="slide">
+        <view class="slider-desc">
+          <text>￥{{slideMin}}</text>
+          <text>￥{{slideMax}}</text>
+        </view>
+        <view class="slider">
+          <zy-slider id="zy-slider" minValue="{{slideMinValue}}" maxValue="{{slideMaxValue}}" min="{{slideMin}}" max="{{slideMax}}" bind:lowValueChange="slideLowChange" bind:heighValueChange="slideHighChange" />
+        </view>
+      </view>
+    </view>
+    <view class="btn">
+      <text bindtap="resetChoose">重置</text>
+      <text bindtap="finishChoose">完成</text>
+    </view>
+  </view>
+</view>
+<!-- choose panel end -->

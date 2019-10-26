@@ -1,0 +1,146 @@
+<view class="page">
+    <view class="navigate">
+        <view class="back" bindtap="backPage"><image src="/images/back-icon.png" /></view>
+        <view class="title"><text>{{details.name}}</text></view>
+    </view>
+    <view class="container">
+        <view class="info-box">
+            <view class="info">
+                <view class="item">
+                    <view class="left">
+                        <view class="title">{{details.roomName}}</view>
+                        <view class="desc">
+                            <block wx:for="{{details.bedInfo}}" wx:key="bedType">{{item.bedType}} {{item.bedDesc}}</block>
+                        </view>
+                    </view>
+                    <view class="right">
+                        <view class="member">
+                            <view class="grade"><text class="text">超级会员</text></view>
+                            <view class="rebate"><text class="text">可返<text>￥{{details.rebatePrice}}</text></text></view>
+                        </view>
+                        <view class="price" wx:if="{{details.avgPrice > 0}}"><text>￥</text>{{details.avgPrice}}</view>
+                        <view class="price" wx:else><text>{{details.avgPrice}}</text></view>
+                    </view>
+                </view>
+                <view class="time">
+                    <view class="date">
+                        <text class="title">{{details.startDate[1]}}月{{details.startDate[2]}}日</text>
+                        <text class="desc">周{{details.startWeek}}入住</text>
+                    </view>
+                    <view class="date">
+                        <text class="title">{{details.endDate[1]}}月{{details.endDate[2]}}日</text>
+                        <text class="desc">周{{details.endWeek}}离店</text>
+                    </view>
+                    <view class="num">共{{details.dayNum}}晚</view>
+                </view>
+            </view>
+            <view class="tip">该根据酒店政策，预订成功后{{details.cancelRules[0].cancelType == 0 || details.InvoiceInfo.invoiceMode == 3 ? '不' : ''}}可取消/变更，如未入住，酒店将扣除全额房费房间整晚保留，14:00前到店可能需要等房，如需要发票，可向酒店索取。</view>
+        </view>
+        <view class="form">
+            <view class="item">
+                <view class="title">房间数</view>
+                <view class="desc black">
+                    <picker bindchange="roomNumChange" value="{{roomIdx}}" disabled="{{isOrder}}" range="{{roomNum}}">
+                        <view class="picker">{{roomNum[roomIdx]}}间</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="item" wx:for="{{roomIdx+1}}" wx:key="*this">
+                <view class="title">入住人{{index+1}}</view>
+                <view class="desc"><input placeholder-style="color: #929292" disabled="{{isOrder}}" maxlength="4" value="{{contacts[index]}}" data-idx="{{index}}" bindblur="inputChange" placeholder="姓名，每间只需填写1人" /></view>
+            </view>
+            <view class="item">
+                <view class="title">手机号</view>
+                <view class="desc"><input placeholder-style="color: #929292" disabled="{{isOrder}}" value="{{phone}}" maxlength="11" data-idx="phone" bindinput="inputChange" placeholder="用于接收通知" /></view>
+            </view>
+            <view class="item">
+                <view class="title">到店时间</view>
+                <view class="desc">
+                    <picker mode="time" value="{{time}}" start="00:00" end="23:00" disabled="{{isOrder}}" bindchange="timeChange">
+                        <view class="picker">{{time}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="item gold" wx:if="{{!isOrder}}">
+                <view class="title">可用金币</view>
+                <view class="desc black">
+                    <block>
+                        <block wx:if="{{gold - (total * (roomIdx + 1)) > 0}}">{{total * (roomIdx + 1)}}</block><block wx:else>{{gold}}</block>金币，可抵<block wx:if="{{gold - (total * (roomIdx + 1)) > 0}}">{{total * (roomIdx + 1)}}</block><block wx:else>{{gold}}</block>元
+                    </block>
+                </view>
+                <view class="switch">
+                    <switch checked="{{isDiscount}}" bindchange="switchChange" />
+                </view>
+            </view>
+        </view>
+        <view class="detail-list">
+            <view class="item first" wx:if="{{!isOpenVip}}">
+                <view class="left">
+                    <text>超级会员年费</text>
+                    <image bindtap="showPupup" src="/images/help.png" />
+                </view>
+                <view class="right">￥49.00</view>
+            </view>
+            <view class="item">
+                <view class="left">住宿费（{{details.dayNum}}晚，{{roomIdx + 1}}间）</view>
+                <view class="right">
+                    <block wx:if="{{!isOpenVip}}">￥{{total * (roomIdx + 1) }}</block>
+                    <block wx:else>￥{{total * (roomIdx + 1)}}</block>
+                </view>
+            </view>
+            <view class="time">
+                <view class="time-item" wx:for="{{priceDetail}}" wx:key="date">
+                    <view class="date">{{item.date}}</view>
+                    <view class="price" wx:if="{{item.salePrice}}">{{roomIdx + 1}}× ￥{{item.salePrice}}</view>
+                </view>
+            </view>
+            <view class="item gold" wx:if="{{isDiscount}}">
+                <view class="left">
+                    <text>金币抵扣</text>
+                </view>
+                <view class="right">
+                    <block wx:if="{{isOrder}}">- ￥{{use_gold}}</block>
+                    <block wx:else>
+                        <block wx:if="{{gold - (total * (roomIdx + 1)) > 0}}">- ￥{{total * (roomIdx + 1)}}</block>
+                        <block wx:else>- ￥{{gold}}</block>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="foot">
+        <view class="price">
+            <view class="text">
+                <block wx:if="{{isDiscount}}">
+                    <block wx:if="{{use_gold > 0}}">
+                        <block wx:if="{{totalPrice * (roomIdx + 1) - use_gold < 0}}"><text>￥</text>0</block>
+                        <block wx:else><text>￥</text>{{totalPrice * (roomIdx + 1) - use_gold+vipPrice}}</block>
+                    </block>
+                    <block wx:else>
+                        <block wx:if="{{totalPrice * (roomIdx + 1) - gold < 0}}"><text>￥</text>0</block>
+                        <block wx:else><text>￥</text>{{totalPrice * (roomIdx + 1) - gold+vipPrice}}</block>
+                    </block>
+                </block>
+                <block wx:else>
+                    <text>￥</text>{{totalPrice * (roomIdx + 1)+vipPrice}}
+                </block>
+            </view>
+            <view class="back">可返￥{{rebatePrice}}</view>
+        </view>
+        <view class="btn {{flag ? '' : 'ok'}}" bindtap="goPayment">立即支付</view>
+    </view>
+    <view class="pupup" wx:if="{{!isOpenVip}}" hidden="{{pupupVisible}}">
+        <view class="maks" bindtap="closepupup"></view>
+        <view class="explain">
+            <view class="title">秀豹超级会员说明</view>
+            <view class="content">
+                <text>1. 秀豹超级会员原价199元/年,限量推广优惠价只需49元/年；</text>
+                <text>2. 每次预订酒店都能返金币，金币可用于提现或用于消费；</text>
+                <text>3.酒店宝WiFi免费使用；</text>
+                <text>4. 会员专属客服；</text>
+                <text>5. 更多权益敬请期待！</text>
+            </view>
+            <view class="btn" bindtap="closepupup">我知道了</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,41 @@
+<!--pages/hotel/jdzdDetail.wxml-->
+<view class="page">
+  <view class="hotel-info">
+    <view class='hotel-title'>{{hotel_detail.hotelname}}</view>
+    <view class='hotel-desc'>
+      <view class='hotel-desc-left'>
+        <view class='hotel-fan'>{{hotel_detail.avgscore}}</view>分
+        <view class='hotel-type'></view>
+      </view>
+      <view class='hotel-desc-right'>￥
+        <view class='hotel-price'>{{hotel_detail.avgprice}}</view>起</view>
+    </view>
+    <view class='hotel-addr'>
+      <view class='hotel-desc-left'>
+        <view class='hotel-type'>{{hotel_detail.address}}</view>
+      </view>
+      <view class='hotel-desc-right'>
+        <view class='hotel-img'>超级会员</view>
+        <view class='hotel-point'>返{{hotel_detail.rebate}}起</view>
+      </view>
+    </view>
+  </view>
+  <view class='scon-panel'>
+    <view class='scon-title'>酒店官方预订小程序</view>
+    <view class='scon-desc'>没有中间商赚差价</view>
+    <view class='scon-img'>
+      <image src='https://u.showboom.cn/ucenter/wxsmall/sulvqrcode/getMpHotelQRcode?uid={{hotel_detail.uid}}&hotel_id={{hotel_detail.hotel_id}}' data-src='https://u.showboom.cn/ucenter/wxsmall/sulvqrcode/getMpHotelQRcode?uid={{hotel_detail.uid}}&hotel_id={{hotel_detail.hotel_id}}' bindtap="previewImage" ></image>
+      </view>
+    <view class='scon-note'>
+      <image src='../../images/icon_wechatapplet.png'></image>
+      微信扫一扫 · 酒店小程序
+    </view>
+    <view class='scon-notice'>
+      <view class='warning-mark'>!</view>
+      必须使用秀豹提供的商家二维码，秀豹才能返利!
+    </view>
+  </view>
+  <view class='scon-notice'>
+     
+  </view>
+</view>

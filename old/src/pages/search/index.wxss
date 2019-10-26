@@ -1,0 +1,85 @@
+.search{
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    top: 0;
+    left: 0;
+}
+.search .form{
+    margin: 26rpx 24rpx;
+    overflow: hidden;
+    position: relative;
+}
+.search .form image{
+    position: absolute;
+    width: 26rpx;
+    height: 28rpx;
+    left: 22rpx;
+    top: 26rpx;
+}
+.search .form input{
+    width: 554rpx;
+    height: 80rpx;
+    color: #808080;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    padding: 0 0 0 66rpx;
+    display: table-cell;
+    vertical-align: middle;
+    background: #F8F8F8;
+    border-radius: 40rpx;
+}
+.search .form text{
+    width: 64rpx;
+    padding: 0 0 0 24rpx;
+    color: #FF6634;
+    font-size: 28rpx;
+    display: table-cell;
+    vertical-align: middle;
+}
+.search .content{
+    padding: 0 28rpx 28rpx;
+    background: #fff;
+}
+.search .content .block{
+    overflow: hidden;
+}
+.search .content .title{
+    color: #181818;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    overflow: hidden;
+    margin: 36rpx 0 40rpx;
+}
+.search .content .title text{
+    float: left;
+}
+.search .content .title image{
+    width: 20rpx;
+    height: 12rpx;
+    float: right;
+    margin: 18rpx 0 0;
+}
+.search .content .list{
+    overflow: hidden;
+}
+.search .content .list .item{
+    width: 162rpx;
+    height: 74rpx;
+    float: left;
+    margin: 0 14rpx 12rpx 0;
+    color: #606060;
+    font-size: 26rpx;
+    line-height: 74rpx;
+    text-align: center;
+    border-radius: 3px;
+    background: #F4F5F9;
+}
+.search .content .list .item:nth-of-type(4n){
+    margin: 0 0 14rpx 0;
+}
+
+
+

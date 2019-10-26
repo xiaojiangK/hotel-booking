@@ -1,0 +1,8 @@
+<view class="page">
+    <view class="container">
+        <image src="https://pbwci.qun.hk/FuLUkF5vtcYYCXMkqYu8caz2M9Rd" />
+        <view class="title">系统升级中，敬请期待…</view>
+        <view class="desc">升级后，秀豹超级会员年费将恢复到99元/年！</view>
+
+    </view>
+</view>

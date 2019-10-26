@@ -1,0 +1,244 @@
+<view class="page">
+    <view class="banner" bindtap="goAlbum" data-id="{{details.hotel.id}}">
+        <image src="{{details.hotel.frontImage}}" lazy-load="true" mode="aspectFill" />
+        <view class="number">
+            <image src="/images/photo-icon.png" />
+            <text>{{gridsLen}}张</text>
+        </view>
+    </view>
+    <view class="detail">
+        <view class="title">{{details.hotel.hotelName}}</view>
+        <view class="desc">
+            <view class="text">{{details.hotel.address}}</view>
+            <view class="map" bindtap="goMap">地图/导航<image src="/images/next-arrow.png" /></view>
+        </view>
+        <view class="score">
+            <view class="num">
+                {{details.hotel.avgScore}}<text>分</text>
+            </view>    
+            <view class="distance">
+                <view class="title">
+                    <block wx:if="{{details.hotel.hotelStar == 2}}">经济型</block>
+                    <block wx:if="{{details.hotel.hotelStar == 3}}">三星</block>
+                    <block wx:if="{{details.hotel.hotelStar == 4}}">四星</block>
+                    <block wx:if="{{details.hotel.hotelStar == 5}}">五星</block>
+                </view>
+                <view class="desc">距您直线{{details.hotel.distance}}公里</view>
+            </view>    
+        </view>
+    </view>
+    <view class="reserve">
+        <view class="head" >
+            <view class="date">
+                <text>{{details.startDate[1]}}月{{details.startDate[2]}}日</text>周{{details.startWeek}}入住
+            </view>
+            <view class="date">
+                <text>{{details.endDate[1]}}月{{details.endDate[2]}}日</text>周{{details.endWeek}}离店
+            </view>
+            <view class="time">共{{details.dayNum}}晚</view>
+        </view>
+        <view class="list">
+            <view class="item" wx:for="{{details.room}}" wx:if="{{item.goodsStatus == 0 || item.goodsStatus == 1}}" wx:key="{{id}}">
+                <view class="picture" bindtap="toDetail" data-id="{{item.id}}">
+                    <block wx:if="{{item.imgUrls[0]}}">
+                        <image src="{{item.imgUrls[0]}}" lazy-load="true" mode="aspectFill" />
+                    </block>
+                    <block wx:else>
+                        <image src="/images/preview.png" lazy-load="true" mode="aspectFill" />
+                    </block>
+                    <view class="icon">详情</view>
+                </view>
+                <view class="desc">
+                    <view class="info">
+                        <view class="title" bindtap="toDetail" data-id="{{item.id}}">{{item.roomName}}</view>
+                        <view class="subTitle" bindtap="toDetail" data-id="{{item.id}}">
+                            <block wx:for="{{item.bedInfo}}" wx:for-item="i" wx:key="{{bedType}}">
+                                <view>{{i.bedType}} {{i.bedDesc}}</view>
+                            </block>
+                            <block wx:if="{{item.window == 0}}">有窗</block>
+                            <block wx:if="{{item.window == 1}}">部分有窗</block>
+                            <block wx:if="{{item.window == 2}}">无窗</block>
+                        </view>
+                        <view class="back" wx:if="{{item.rebatePrice > 0}}">可返 ￥{{item.rebatePrice}}</view>
+                    </view>
+                    <view class="price">
+                        <view class="surplus noRoom" wx:if="{{item.goodsStatus == 0}}">
+                            <view class="title">满房</view>
+                            <view class="num">满房</view>
+                        </view>
+                        <view class="surplus" wx:else bindtap="goPlaceOrder" data-data="{{item}}">
+                            <view class="title">预订</view>
+                            <view class="num">预订</view>
+                        </view>
+                        <view class="price-text">
+                            <block wx:if="{{item.avgPrice > 0}}"><text>￥</text>{{item.avgPrice}}</block>
+                            <text wx:else>{{item.avgPrice}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 房间详情弹窗 -->
+        <view class="detail-pop">
+            <view class="mark" bindtap="closeDetail" wx:if="{{detailVisible}}"></view>
+            <view class="container {{ detailVisible ? 'show' : '' }}">
+                <view class="head">
+                    <text>{{roomDetail.roomName}}</text>
+                    <view class="close" bindtap="closeDetail">
+                        <image src="/images/close-icon2.png" />
+                    </view>
+                </view>
+                <scroll-view scroll-y scroll-with-animation style="height: 874rpx">
+                    <view class="album">
+                        <block wx:if="{{roomDetail.imgUrls.length > 0}}">
+                            <swiper autoplay circular current="{{current}}" bindchange="swiperchange">
+                                <block wx:for="{{roomDetail.imgUrls}}" wx:key="*this">
+                                    <swiper-item>
+                                        <image src="{{item}}" lazy-load="true" mode="aspectFill" />
+                                    </swiper-item>
+                                </block>
+                            </swiper>
+                            <view class="num">{{current + 1}}/{{roomDetail.imgUrls.length}}</view>
+                        </block>
+                        <image src="/images/preview2.png" wx:else lazy-load="true" mode="aspectFill" />
+                    </view>
+                    <view class="info">
+                        <view class="list">
+                            <view class="item">
+                                <text class="title">上网</text>
+                                <text class="desc">
+                                    <block wx:if="{{roomDetail.internetWay == 0}}">无法上网</block>
+                                    <block wx:if="{{roomDetail.internetWay == 1}}">无线WIFI</block>
+                                    <block wx:if="{{roomDetail.internetWay == 2}}">有线宽带</block>
+                                    <block wx:if="{{roomDetail.internetWay == 3}}">无线WIFI和有线宽带</block>
+                                </text>
+                            </view>
+                            <view class="item" wx:for="{{roomDetail.facilitie}}" wx:key="{{title}}">
+                                <text class="title">{{item.title}}</text>
+                                <text class="desc">
+                                    <block wx:if="{{item.desc == 1}}">有</block>
+                                    <block wx:else>无</block>
+                                </text>
+                            </view>
+                            <view class="item">
+                                <text class="title">窗户</text>
+                                <text class="desc">
+                                    <block wx:if="{{roomDetail.window == 0}}">有窗</block>
+                                    <block wx:if="{{roomDetail.window == 1}}">部分有窗</block>
+                                    <block wx:if="{{roomDetail.window == 2}}">无窗</block>
+                                </text>
+                            </view>
+                            <view class="item">
+                                <text class="title">可住</text>
+                                <text class="desc">{{roomDetail.capacity}}人</text>
+                            </view>
+                            <view class="item">
+                                <text class="title">面积</text>
+                                <text class="desc">{{roomDetail.useableArea}}</text>
+                            </view>
+                            <view class="item">
+                                <text class="title">楼层</text>
+                                <text class="desc">
+                                    <block wx:for="{{roomDetail.floor}}" wx:key="*this">{{item}}<block wx:if="{{index != roomDetail.floor.length - 1}}">-</block>层</block>
+                                </text>
+                            </view>
+                            <view class="item">
+                                <text class="title">早餐</text>
+                                <text class="desc">
+                                    <block wx:if="{{roomDetail.breakfastType == 0}}">不含早餐</block>
+                                    <block wx:if="{{roomDetail.breakfastType > 0}}">含早餐</block>
+                                </text>
+                            </view>
+                            <view class="item">
+                                <text class="title">床型</text>
+                                <text class="desc">{{roomDetail.bedInfo[0].bedType}}{{roomDetail.bedInfo[0].bedDesc}}{{roomDetail.bedInfo[0].bedCount}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="policy">
+                        <view class="title">房型政策</view>
+                        <view class="content">
+                            <view class="item">
+                                <view class="title">退款规则</view>
+                                <view class="desc">
+                                    <block wx:for="{{roomDetail.cancelRules}}" wx:key="{{cancelType}}">
+                                        <view wx:if="{{item.cancelType == 0}}">不可取消</view>
+                                        <view wx:if="{{item.cancelType == 1}}">可以取消</view>
+                                        <view wx:if="{{item.aheadCancelDays > 0}}">提前取消天数，入住{{item.aheadCancelDays}}日取消。</view>
+                                        <view wx:else>提前取消天数，入住当日取消。</view>
+                                        <view wx:if="{{item.deductType == 0}}">提前取消时间类型：时间</view>
+                                        <view wx:if="{{item.deductType == 1}}">提前取消时间类型：时间量</view>
+                                        <view wx:if="{{item.aheadCancelHours}}">提前取消的时间：{{item.aheadCancelHours}}</view>
+                                    </block>
+                                </view>
+                            </view>
+                            <view class="item">
+                                <view class="title">使用规则</view>
+                                <view class="desc">
+                                    <view>●直接消费，携带所有入住，人的有效身份证办理入住，入住必须按照一人一-证</view>
+                                    <view>●请在14:00之后入住并于次日12:00之前退房;如需提前入住或延时退房，请咨询商家</view>
+                                    <view>●入住需要押金，金额以前台为准</view>
+                                    <!-- <view wx:for="{{roomDetail.bookRules}}" wx:if="{{index == 0}}" wx:for-item="i" wx:key="{{serialCheckinMin}}">
+                                        <view>连续入住最少天数，{{i.serialCheckinMin == 0 ? '不限制' : i.serialCheckinMin + '天'}}</view>
+                                        <view>连续入住最多天数，{{i.serialCheckinMax == 0 ? '不限制' : i.serialCheckinMax + '天'}}</view>
+                                        <view>最少预订间数，{{i.roomCountMin == 0 ? '不限制' : i.roomCountMin + '间'}}</view>
+                                        <view>最多预订间数，{{i.roomCountMax == 0 ? '不限制' : i.roomCountMax + '间'}}</view>
+                                        <view>最早预订天数，{{i.earliestBookingDays == -1 ? '不限制' : i.earliestBookingDays + '天'}}</view>
+                                        <view>最早预订时间，{{i.earliestBookingHours ? i.earliestBookingHours : '不限制'}}</view>
+                                        <view>最晚预订天数，{{i.latestBookingDays == -1 ? '支持凌晨预定' : i.latestBookingDays + '天'}}</view>
+                                        <view>最晚预订时间，{{i.latestBookingHours ? i.latestBookingHours : '不限制'}}</view>
+                                        <view>是否支持凌晨预定{{i.isDaybreakBooking == 0 ? '不支持' : '支持'}}</view>
+                                        <view>规则生效开始日期，{{i.inStartDate == 0 ? '2019年2月9号' : i.inStartDate}}</view>
+                                        <view>规则生效结束日期，{{i.inEndDate == 0 ? '2019年2月10号' : i.inEndDate}}</view>
+                                    </view> -->
+                                </view>
+                            </view>
+                            <view class="item">
+                                <view class="title">预订说明</view>
+                                <view class="desc">
+                                    <view>●如需发票，请联系酒店方</view>
+                                    <!-- <view wx:if="{{roomDetail.InvoiceInfo.invoiceMode == 1}}">佣金模式 酒店开具发票，可显示文案为："如需发票,请向酒店前台索取"</view>
+                                    <view wx:if="{{roomDetail.InvoiceInfo.invoiceMode == 2}}">底价模式 美团开具发票</view>
+                                    <view wx:if="{{roomDetail.InvoiceInfo.invoiceMode == 3}}">第三方开具发票</view>
+                                    <view wx:if="{{roomDetail.InvoiceInfo.invoiceMode == 2 && roomDetail.InvoiceInfo.supportTypes}}">如果需要美团开具发票，在下单时需要填写收取发票信息</view> -->
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view class="foot">
+                    <view class="price">
+                        <view class="text">
+                            <block wx:if="{{roomDetail.avgPrice > 0}}"><text>￥</text>{{roomDetail.avgPrice}}</block>
+                            <text wx:else>{{roomDetail.avgPrice}}</text>
+                        </view>
+                        <view class="back" wx:if="{{roomDetail.rebatePrice}}">可返 ￥{{roomDetail.rebatePrice}}</view>
+                    </view>
+                    <view class="btn" bindtap="goPlaceOrder" data-data="{{roomDetail}}">立即支付</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="service">
+        <view class="title">可提供的服务</view>
+        <view class="list">
+            <view class="item" wx:for="{{details.service}}" wx:key="*this">{{item}}</view>
+        </view>
+    </view>
+    <view class="summary">
+        <view class="title">酒店简介</view>
+        <view class="content">
+            <text>{{details.hotel.info}}</text>
+        </view>
+        <view class="contact" bindtap="goCall">
+            <image src="/images/tel-icon.png" />
+            <text>联系商家</text>
+        </view>
+    </view>
+    <view class="footer">
+        <image src="/images/bom-logo.png" />
+    </view>
+    <view hidden="{{dateVisible}}">
+        <calendar id="rili" />
+    </view>
+</view>

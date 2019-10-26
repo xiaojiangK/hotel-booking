@@ -1,0 +1,21 @@
+<!-- 个人中心订单列表页 -->
+<import src="./../../template/fromId/index" />
+<view class="page">
+  <view class="tabs">
+    <view wx:for="{{tabs}}" bindtap="tabSwitch" data-id="{{item.id}}" wx:key="title" class="item {{item.active ? 'active' : ''}}">
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+  <view class="content">
+    <view class="list">
+      <block wx:for="{{list}}" wx:key="index">
+        <order-item data="{{item}}" bind:bindCancel="bindCancel"></order-item>
+      </block>
+      <view class="no-order" wx:if="{{list.length == 0}}">
+        <image src="https://pbwci.qun.hk/FnRx6MvBK1sFrkWmg8Rd19Rr1FaI" />
+        <text>没有相应订单记录</text>
+      </view>
+      <view class="period" wx:else>就这么多，赶紧下单吧</view>
+    </view>
+  </view>
+</view>

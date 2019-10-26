@@ -1,0 +1,110 @@
+page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+}
+.content {
+  padding: 14rpx 40rpx 0;
+}
+.content .score {
+  height: 60rpx;
+  color: #333;
+  font-size: 36rpx;
+  line-height: 60rpx;
+}
+.content .score .icon-star {
+  vertical-align: top;
+  margin-right: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+.content .score .icon-star:first-of-type {
+  margin-left: 28rpx;
+}
+.content .score .number {
+  float: right;
+  color: #ff6342;
+  font-size: 24rpx;
+}
+.content .score .number::first-letter {
+  margin-right: 10rpx;
+  font-size: 50rpx;
+  font-weight: 500;
+}
+.content .text {
+  margin-top: 34rpx;
+  width: 100%;
+  height: 280rpx;
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 40rpx;
+}
+.content .count {
+  margin-top: 18rpx;
+  color: #b5b5b5;
+  font-size: 22rpx;
+  font-weight: 400;
+  line-height: 22rpx;
+}
+.content .photo-list .item {
+  display: inline-block;
+  position: relative;
+  margin-top: 40rpx;
+  margin-right: 40rpx;
+  width: 160rpx;
+  height: 160rpx;
+  background: #f1f1f1;
+}
+.content .photo-list .item.hide {
+  display: none;
+}
+.content .photo-list .null,
+.content .photo-list .photo {
+  width: 100%;
+  height: 100%;
+}
+.content .photo-list .icon-delete {
+  position: absolute;
+  top: -16rpx;
+  right: -16rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.content .photo-list .icon-photo {
+  margin: 53rpx 52rpx;
+  width: 56rpx;
+  height: 54rpx;
+}
+.content .anonymous {
+  margin-top: 66rpx;
+  color: #333;
+  font-size: 34rpx;
+  font-weight: 400;
+  line-height: 40rpx;
+}
+.content .anonymous .icon-checkbox {
+  vertical-align: top;
+  margin-right: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.btn {
+  display: flex;
+  font-size: 36rpx;
+  line-height: 98rpx;
+  text-align: center;
+}
+.btn text:first-of-type {
+  flex: 1;
+  border-top: 2rpx solid #e0e0e0;
+  color: #333;
+  background: #fff;
+}
+.btn text:last-of-type {
+  flex: 2;
+  border-top: 2rpx solid #ff6342;
+  color: #fff;
+  background: #ff6342;
+}

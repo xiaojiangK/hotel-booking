@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "searchStar": "components/searchStar/index",
+    "calendar": "components/calendar/index"
+  }
+}

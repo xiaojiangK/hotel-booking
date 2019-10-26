@@ -1,0 +1,5 @@
+<view class="page">
+    <scroll-view scroll-y scroll-with-animation style="height: 1160rpx">
+        <city data="{{city}}" binddetail="cityChange" my-city config="{{config}}" />
+    </scroll-view>
+</view>

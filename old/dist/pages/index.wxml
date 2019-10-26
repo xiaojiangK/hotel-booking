@@ -1,0 +1,91 @@
+<import src="components/fromId/index.wxml" />
+<view class="page">
+    <button wx:if="{{!isAuthorize}}" class="userInfo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" />
+    <button wx:if="{{!isAuthorizeNumber}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
+    <view class="banner">
+        <swiper circular>
+            <block wx:for="{{banner}}" wx:key="thumb">
+                <swiper-item>
+                    <image src="/images/banner-04.png" lazy-load="true"  mode="aspectFill" />
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="tip" wx:if="{{tipVisible}}">
+            点击<image src="/images/spot-icon.png" class="spot" />，然后“添加到我的小程序”<image src="/images/close-icon.png" bindtap="closeTip" class="close" />
+        </view>
+        <view class="tabs">
+        <!--
+            <view class="item {{showViewjdzd?'white_left':'block'}}" bindtap="onChangeShowjdzd">
+                <view class="{{showViewjdzd?'title':'title_white'}}">酒店直订</view>
+                <view class="{{showViewjdzd?'subTitle':'subTitle_white'}}">酒店官方小程序</view>
+
+            </view> 
+            -->       
+            <view class="item white_left"  bindtap="onChangeShowmtjd">
+                <view class="title">今夜特价</view>
+                <view class="subTitle">返现50%</view>
+              
+            </view>
+        </view>
+    </view>
+    <view class="main header_view_hide" >
+        <view class="form">
+            <form bindsubmit="formSubmitjdzd">
+                <view class="jdzd_content">
+<image src="/images/jdzd_index_title.png" class="jdzd_index_title_img" mode="widthFix" />
+                </view>
+                <button form-type="submit" class="submit" hover-class="none" type="primary">查询酒店<template is="fromId" /></button>
+            </form>
+        </view>
+    </view>    
+    
+    <view class="main header_view_show">
+        <view class="form">
+            <form bindsubmit="formSubmit">
+                <view class="adress">
+                    <view class="title" bindtap="cityToggle">{{address}}</view>
+                    <view class="icon" bindtap="getLocation">
+                        <image src="/images/address-icon.png" />
+                        <text>当前位置</text>
+                    </view>
+                </view>
+                <view class="search_1 date">
+                    <view class="item">
+                        <view class="title">{{date.inDate}}入住</view>
+                        <view class="time">
+                            {{date.starTime}}<text>{{week.start}}</text>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <view class="title">{{date.outDate}}离店</view>
+                        <view class="time">
+                            {{date.endTime}}<text>{{week.end}}</text>
+                        </view>
+                    </view>
+                    <view class="item day">
+                        <view class="title">共1晚</view>
+                    </view>
+                    <template is="fromId" />
+                </view>
+                <view class="search {{search ? 'active' : ''}}">
+                    <navigator url="search/index?page=index" class="text" hover-class="none">{{search ? search : '酒店名'}}</navigator>
+                    <image bindtap="closeSearch" data-id="search" src="https://pbwci.qun.hk/FqfxDdaMO_9G1k5l7sKnZQMf0YxV" />
+                </view>
+                <view class="search {{starSelect ? 'active' : ''}}">
+                    <view class="text" bindtap="starToggle">
+                        <block wx:for="{{starData}}" wx:key="{{index}}">{{item.title}}<block wx:if="{{index != starData.length - 1}}">/</block></block>
+                    </view>
+                    <image bindtap="closeSearch" src="https://pbwci.qun.hk/FqfxDdaMO_9G1k5l7sKnZQMf0YxV" />
+                </view>
+                <button form-type="submit" class="submit jdzdbtn" hover-class="none" type="primary">查询酒店<template is="fromId" /></button>
+            </form>
+        </view>
+    </view>
+
+    <searchStar visible="{{starVisible}}" priceId="{{priceId}}" starId="{{starId}}" bindclose="closeStar" bindsubmit="submitStar" />
+
+    <view hidden="{{dateVisible}}">
+        <calendar id="rili" />
+    </view>
+
+</view>

@@ -1,0 +1,72 @@
+
+<view class="search">
+    <view class="form">
+        <image src="/images/search-icon.png" />
+        <input type="text" value="{{keyword}}" bindinput="searchInput" placeholder="位置/酒店/关键词" confirm-type="search"  />
+        <text bindtap="search">搜索</text>
+    </view>
+    <!-- <view class="content">
+        <view class="block">
+            <view class="title">
+                <text>热门</text>
+                <image src="/images/down-icon.png" />
+            </view>
+            <view class="list">
+                <view class="item">北京站</view>
+                <view class="item">北京西站</view>
+                <view class="item">王府井</view>
+                <view class="item">南锣鼓巷</view>
+                <view class="item">北京南站</view>
+                <view class="item">古北水镇</view>
+                <view class="item">首都机场</view>
+                <view class="item">前门</view>
+            </view>
+        </view>
+        <view class="block">
+            <view class="title">
+                <text>品牌</text>
+                <image src="/images/down-icon.png" />
+            </view>
+            <view class="list">
+                <view class="item">如家</view>
+                <view class="item">汉庭</view>
+                <view class="item">7天</view>
+                <view class="item">格林豪泰</view>
+                <view class="item">尚客优</view>
+                <view class="item">速8</view>
+                <view class="item">锦江之星</view>
+                <view class="item">时光漫步</view>
+            </view>
+        </view>
+        <view class="block">
+            <view class="title">
+                <text>地铁站</text>
+            </view>
+            <view class="list">
+                <view class="item">四惠东</view>
+                <view class="item">四惠</view>
+                <view class="item">大望路</view>
+                <view class="item">国贸</view>
+                <view class="item">永安里</view>
+                <view class="item">建国门</view>
+                <view class="item">东单</view>
+                <view class="item">王府井</view>
+            </view>
+        </view>
+        <view class="block">
+            <view class="title">
+                <text>行政区/商圈</text>
+            </view>
+            <view class="list">
+                <view class="item">大望路</view>
+                <view class="item">双井</view>
+                <view class="item">北苑家园</view>
+                <view class="item">东直门</view>
+                <view class="item">双榆树</view>
+                <view class="item">后海</view>
+                <view class="item">什刹海</view>
+                <view class="item">酒仙桥</view>
+            </view>
+        </view>
+    </view> -->
+</view>

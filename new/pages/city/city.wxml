@@ -1,0 +1,27 @@
+<!-- search start -->
+<view class="search">
+  <view>
+    <view class="wrap">
+      <image class="icon-search" src="../../assets/image/icon-search.png" mode="aspectFill"></image>
+      <input type="text" placeholder="城市名" placeholder-style="color:#888;" value="{{keyword}}" bindfocus="searchStart" bindinput="searchInput" bindblur="searchEnd" />
+      <image class="icon-clear-1" src="../../assets/image/icon-clear-1.png" mode="aspectFill" hidden="{{!keyword}}" bindtap="clearSearch" ></image>
+    </view>
+    <text class="btn" data-item="{{keyword}}" bindtap="getCityList">搜索</text>
+  </view>
+  <!-- label start -->
+  <view class="label">已开通城市</view>
+  <!-- label end -->
+</view>
+<!-- search end -->
+<!-- 选择城市页 -->
+
+<!-- list start -->
+<view class="list">
+  <block wx:for="{{city}}" wx:key="index">
+    <view class="item" wx:if="{{item.city}}" data-city="{{item.city}}" bindtap="select">{{item.city}}</view>
+  </block>
+</view>
+<!-- list end -->
+<!-- desc start -->
+<view class="desc">支持城市不断更新中……</view>
+<!-- desc end -->
